@@ -31,6 +31,7 @@ void power_spectrum()
   GV.kF     = (2.0*M_PI)/GV.BoxSize;
   GV.kN     = M_PI/GV.CellSize;
   GV.shotNoise = pow(GV.CellSize,3);
+  printf("Shot Noise:%lf\n", GV.shotNoise);
 
   
   //Initializing vectors

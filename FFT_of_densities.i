@@ -4339,6 +4339,12 @@ int transform()
       }
 
       gp[m].DenCon_K_2 = gp[m].DenCon_K[0]*gp[m].DenCon_K[0] + gp[m].DenCon_K[1]*gp[m].DenCon_K[1];
+
+      if(gp[m].DenCon_K_2 < 0.0)
+ {
+   printf("Negative Delta^2=%lf for m=%d\n", gp[m].DenCon_K_2, m);
+ }
+
     }
 
   printf("Density contrast in k-space with CIC weight fn ready!!\n");
@@ -4402,6 +4408,7 @@ void power_spectrum()
   GV.kF = (2.0*3.14159265358979323846)/GV.BoxSize;
   GV.kN = 3.14159265358979323846/GV.CellSize;
   GV.shotNoise = pow(GV.CellSize,3);
+  printf("Shot Noise:%lf\n", GV.shotNoise);
 
 
 

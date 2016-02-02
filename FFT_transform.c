@@ -346,6 +346,12 @@ int transform()
       }//else
 
       gp[m].DenCon_K_2 = gp[m].DenCon_K[0]*gp[m].DenCon_K[0] + gp[m].DenCon_K[1]*gp[m].DenCon_K[1];
+      
+      if(gp[m].DenCon_K_2 < 0.0)
+	{
+	  printf("Negative Delta^2=%lf for m=%d\n", gp[m].DenCon_K_2, m);
+	}
+
     }//for m
   
   printf("Density contrast in k-space with CIC weight fn ready!!\n");
