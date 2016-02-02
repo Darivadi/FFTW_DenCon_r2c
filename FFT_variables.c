@@ -149,4 +149,4 @@ struct GlobalVariables
 /*+++++ Power Spectrum +++++*/
 #define COMPLEXMAG(A,i) ( (A[i][0] * A[i][0]) + (A[i][1] * A[i][1]) )
 #define VECTORMAG(x,y,z) sqrt( (x * x) + (y * y) + (z * z) )
-#define C1(k) 1.0 - 0.666666666667*sin(k*GV.dx*0.5)*sin(k*GV.dx*0.5)
+#define C1(k) 1.0 - 0.666666666667*sin(k*GV.CellSize*0.5)*sin(k*GV.CellSize*0.5)

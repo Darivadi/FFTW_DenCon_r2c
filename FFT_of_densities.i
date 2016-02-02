@@ -3489,8 +3489,8 @@ __attribute__ ((__nothrow__ , __leaf__)) __signbitl (long double __x)
 # 488 "/usr/include/math.h" 3 4
 
 # 7 "FFT_of_densities.c" 2
-# 1 "/home/dvalencia/local/include/fftw3.h" 1
-# 89 "/home/dvalencia/local/include/fftw3.h"
+# 1 "/home/darivadi/local/include/fftw3.h" 1
+# 89 "/home/darivadi/local/include/fftw3.h"
 enum fftw_r2r_kind_do_not_use_me {
      FFTW_R2HC=0, FFTW_HC2R=1, FFTW_DHT=2,
      FFTW_REDFT00=3, FFTW_REDFT01=4, FFTW_REDFT10=5, FFTW_REDFT11=6,
@@ -3506,7 +3506,7 @@ struct fftw_iodim_do_not_use_me {
 # 1 "/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h" 1 3 4
 # 147 "/usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h" 3 4
 typedef long int ptrdiff_t;
-# 102 "/home/dvalencia/local/include/fftw3.h" 2
+# 102 "/home/darivadi/local/include/fftw3.h" 2
 struct fftw_iodim64_do_not_use_me {
      ptrdiff_t n;
      ptrdiff_t is;
@@ -3515,14 +3515,353 @@ struct fftw_iodim64_do_not_use_me {
 
 typedef void (*fftw_write_char_func_do_not_use_me)(char c, void *);
 typedef int (*fftw_read_char_func_do_not_use_me)(void *);
-# 353 "/home/dvalencia/local/include/fftw3.h"
-typedef double fftw_complex[2]; typedef struct fftw_plan_s *fftw_plan; typedef struct fftw_iodim_do_not_use_me fftw_iodim; typedef struct fftw_iodim64_do_not_use_me fftw_iodim64; typedef enum fftw_r2r_kind_do_not_use_me fftw_r2r_kind; typedef fftw_write_char_func_do_not_use_me fftw_write_char_func; typedef fftw_read_char_func_do_not_use_me fftw_read_char_func; extern void fftw_execute(const fftw_plan p); extern fftw_plan fftw_plan_dft(int rank, const int *n, fftw_complex *in, fftw_complex *out, int sign, unsigned flags); extern fftw_plan fftw_plan_dft_1d(int n, fftw_complex *in, fftw_complex *out, int sign, unsigned flags); extern fftw_plan fftw_plan_dft_2d(int n0, int n1, fftw_complex *in, fftw_complex *out, int sign, unsigned flags); extern fftw_plan fftw_plan_dft_3d(int n0, int n1, int n2, fftw_complex *in, fftw_complex *out, int sign, unsigned flags); extern fftw_plan fftw_plan_many_dft(int rank, const int *n, int howmany, fftw_complex *in, const int *inembed, int istride, int idist, fftw_complex *out, const int *onembed, int ostride, int odist, int sign, unsigned flags); extern fftw_plan fftw_plan_guru_dft(int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, fftw_complex *in, fftw_complex *out, int sign, unsigned flags); extern fftw_plan fftw_plan_guru_split_dft(int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, double *ri, double *ii, double *ro, double *io, unsigned flags); extern fftw_plan fftw_plan_guru64_dft(int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, fftw_complex *in, fftw_complex *out, int sign, unsigned flags); extern fftw_plan fftw_plan_guru64_split_dft(int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, double *ri, double *ii, double *ro, double *io, unsigned flags); extern void fftw_execute_dft(const fftw_plan p, fftw_complex *in, fftw_complex *out); extern void fftw_execute_split_dft(const fftw_plan p, double *ri, double *ii, double *ro, double *io); extern fftw_plan fftw_plan_many_dft_r2c(int rank, const int *n, int howmany, double *in, const int *inembed, int istride, int idist, fftw_complex *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftw_plan fftw_plan_dft_r2c(int rank, const int *n, double *in, fftw_complex *out, unsigned flags); extern fftw_plan fftw_plan_dft_r2c_1d(int n,double *in,fftw_complex *out,unsigned flags); extern fftw_plan fftw_plan_dft_r2c_2d(int n0, int n1, double *in, fftw_complex *out, unsigned flags); extern fftw_plan fftw_plan_dft_r2c_3d(int n0, int n1, int n2, double *in, fftw_complex *out, unsigned flags); extern fftw_plan fftw_plan_many_dft_c2r(int rank, const int *n, int howmany, fftw_complex *in, const int *inembed, int istride, int idist, double *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftw_plan fftw_plan_dft_c2r(int rank, const int *n, fftw_complex *in, double *out, unsigned flags); extern fftw_plan fftw_plan_dft_c2r_1d(int n,fftw_complex *in,double *out,unsigned flags); extern fftw_plan fftw_plan_dft_c2r_2d(int n0, int n1, fftw_complex *in, double *out, unsigned flags); extern fftw_plan fftw_plan_dft_c2r_3d(int n0, int n1, int n2, fftw_complex *in, double *out, unsigned flags); extern fftw_plan fftw_plan_guru_dft_r2c(int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, double *in, fftw_complex *out, unsigned flags); extern fftw_plan fftw_plan_guru_dft_c2r(int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, fftw_complex *in, double *out, unsigned flags); extern fftw_plan fftw_plan_guru_split_dft_r2c( int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, double *in, double *ro, double *io, unsigned flags); extern fftw_plan fftw_plan_guru_split_dft_c2r( int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, double *ri, double *ii, double *out, unsigned flags); extern fftw_plan fftw_plan_guru64_dft_r2c(int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, double *in, fftw_complex *out, unsigned flags); extern fftw_plan fftw_plan_guru64_dft_c2r(int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, fftw_complex *in, double *out, unsigned flags); extern fftw_plan fftw_plan_guru64_split_dft_r2c( int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, double *in, double *ro, double *io, unsigned flags); extern fftw_plan fftw_plan_guru64_split_dft_c2r( int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, double *ri, double *ii, double *out, unsigned flags); extern void fftw_execute_dft_r2c(const fftw_plan p, double *in, fftw_complex *out); extern void fftw_execute_dft_c2r(const fftw_plan p, fftw_complex *in, double *out); extern void fftw_execute_split_dft_r2c(const fftw_plan p, double *in, double *ro, double *io); extern void fftw_execute_split_dft_c2r(const fftw_plan p, double *ri, double *ii, double *out); extern fftw_plan fftw_plan_many_r2r(int rank, const int *n, int howmany, double *in, const int *inembed, int istride, int idist, double *out, const int *onembed, int ostride, int odist, const fftw_r2r_kind *kind, unsigned flags); extern fftw_plan fftw_plan_r2r(int rank, const int *n, double *in, double *out, const fftw_r2r_kind *kind, unsigned flags); extern fftw_plan fftw_plan_r2r_1d(int n, double *in, double *out, fftw_r2r_kind kind, unsigned flags); extern fftw_plan fftw_plan_r2r_2d(int n0, int n1, double *in, double *out, fftw_r2r_kind kind0, fftw_r2r_kind kind1, unsigned flags); extern fftw_plan fftw_plan_r2r_3d(int n0, int n1, int n2, double *in, double *out, fftw_r2r_kind kind0, fftw_r2r_kind kind1, fftw_r2r_kind kind2, unsigned flags); extern fftw_plan fftw_plan_guru_r2r(int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, double *in, double *out, const fftw_r2r_kind *kind, unsigned flags); extern fftw_plan fftw_plan_guru64_r2r(int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, double *in, double *out, const fftw_r2r_kind *kind, unsigned flags); extern void fftw_execute_r2r(const fftw_plan p, double *in, double *out); extern void fftw_destroy_plan(fftw_plan p); extern void fftw_forget_wisdom(void); extern void fftw_cleanup(void); extern void fftw_set_timelimit(double t); extern void fftw_plan_with_nthreads(int nthreads); extern int fftw_init_threads(void); extern void fftw_cleanup_threads(void); extern int fftw_export_wisdom_to_filename(const char *filename); extern void fftw_export_wisdom_to_file(FILE *output_file); extern char *fftw_export_wisdom_to_string(void); extern void fftw_export_wisdom(fftw_write_char_func write_char, void *data); extern int fftw_import_system_wisdom(void); extern int fftw_import_wisdom_from_filename(const char *filename); extern int fftw_import_wisdom_from_file(FILE *input_file); extern int fftw_import_wisdom_from_string(const char *input_string); extern int fftw_import_wisdom(fftw_read_char_func read_char, void *data); extern void fftw_fprint_plan(const fftw_plan p, FILE *output_file); extern void fftw_print_plan(const fftw_plan p); extern void *fftw_malloc(size_t n); extern double *fftw_alloc_real(size_t n); extern fftw_complex *fftw_alloc_complex(size_t n); extern void fftw_free(void *p); extern void fftw_flops(const fftw_plan p, double *add, double *mul, double *fmas); extern double fftw_estimate_cost(const fftw_plan p); extern double fftw_cost(const fftw_plan p); extern const char fftw_version[]; extern const char fftw_cc[]; extern const char fftw_codelet_optim[];
-typedef float fftwf_complex[2]; typedef struct fftwf_plan_s *fftwf_plan; typedef struct fftw_iodim_do_not_use_me fftwf_iodim; typedef struct fftw_iodim64_do_not_use_me fftwf_iodim64; typedef enum fftw_r2r_kind_do_not_use_me fftwf_r2r_kind; typedef fftw_write_char_func_do_not_use_me fftwf_write_char_func; typedef fftw_read_char_func_do_not_use_me fftwf_read_char_func; extern void fftwf_execute(const fftwf_plan p); extern fftwf_plan fftwf_plan_dft(int rank, const int *n, fftwf_complex *in, fftwf_complex *out, int sign, unsigned flags); extern fftwf_plan fftwf_plan_dft_1d(int n, fftwf_complex *in, fftwf_complex *out, int sign, unsigned flags); extern fftwf_plan fftwf_plan_dft_2d(int n0, int n1, fftwf_complex *in, fftwf_complex *out, int sign, unsigned flags); extern fftwf_plan fftwf_plan_dft_3d(int n0, int n1, int n2, fftwf_complex *in, fftwf_complex *out, int sign, unsigned flags); extern fftwf_plan fftwf_plan_many_dft(int rank, const int *n, int howmany, fftwf_complex *in, const int *inembed, int istride, int idist, fftwf_complex *out, const int *onembed, int ostride, int odist, int sign, unsigned flags); extern fftwf_plan fftwf_plan_guru_dft(int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, fftwf_complex *in, fftwf_complex *out, int sign, unsigned flags); extern fftwf_plan fftwf_plan_guru_split_dft(int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, float *ri, float *ii, float *ro, float *io, unsigned flags); extern fftwf_plan fftwf_plan_guru64_dft(int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, fftwf_complex *in, fftwf_complex *out, int sign, unsigned flags); extern fftwf_plan fftwf_plan_guru64_split_dft(int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, float *ri, float *ii, float *ro, float *io, unsigned flags); extern void fftwf_execute_dft(const fftwf_plan p, fftwf_complex *in, fftwf_complex *out); extern void fftwf_execute_split_dft(const fftwf_plan p, float *ri, float *ii, float *ro, float *io); extern fftwf_plan fftwf_plan_many_dft_r2c(int rank, const int *n, int howmany, float *in, const int *inembed, int istride, int idist, fftwf_complex *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftwf_plan fftwf_plan_dft_r2c(int rank, const int *n, float *in, fftwf_complex *out, unsigned flags); extern fftwf_plan fftwf_plan_dft_r2c_1d(int n,float *in,fftwf_complex *out,unsigned flags); extern fftwf_plan fftwf_plan_dft_r2c_2d(int n0, int n1, float *in, fftwf_complex *out, unsigned flags); extern fftwf_plan fftwf_plan_dft_r2c_3d(int n0, int n1, int n2, float *in, fftwf_complex *out, unsigned flags); extern fftwf_plan fftwf_plan_many_dft_c2r(int rank, const int *n, int howmany, fftwf_complex *in, const int *inembed, int istride, int idist, float *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftwf_plan fftwf_plan_dft_c2r(int rank, const int *n, fftwf_complex *in, float *out, unsigned flags); extern fftwf_plan fftwf_plan_dft_c2r_1d(int n,fftwf_complex *in,float *out,unsigned flags); extern fftwf_plan fftwf_plan_dft_c2r_2d(int n0, int n1, fftwf_complex *in, float *out, unsigned flags); extern fftwf_plan fftwf_plan_dft_c2r_3d(int n0, int n1, int n2, fftwf_complex *in, float *out, unsigned flags); extern fftwf_plan fftwf_plan_guru_dft_r2c(int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, float *in, fftwf_complex *out, unsigned flags); extern fftwf_plan fftwf_plan_guru_dft_c2r(int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, fftwf_complex *in, float *out, unsigned flags); extern fftwf_plan fftwf_plan_guru_split_dft_r2c( int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, float *in, float *ro, float *io, unsigned flags); extern fftwf_plan fftwf_plan_guru_split_dft_c2r( int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, float *ri, float *ii, float *out, unsigned flags); extern fftwf_plan fftwf_plan_guru64_dft_r2c(int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, float *in, fftwf_complex *out, unsigned flags); extern fftwf_plan fftwf_plan_guru64_dft_c2r(int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, fftwf_complex *in, float *out, unsigned flags); extern fftwf_plan fftwf_plan_guru64_split_dft_r2c( int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, float *in, float *ro, float *io, unsigned flags); extern fftwf_plan fftwf_plan_guru64_split_dft_c2r( int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, float *ri, float *ii, float *out, unsigned flags); extern void fftwf_execute_dft_r2c(const fftwf_plan p, float *in, fftwf_complex *out); extern void fftwf_execute_dft_c2r(const fftwf_plan p, fftwf_complex *in, float *out); extern void fftwf_execute_split_dft_r2c(const fftwf_plan p, float *in, float *ro, float *io); extern void fftwf_execute_split_dft_c2r(const fftwf_plan p, float *ri, float *ii, float *out); extern fftwf_plan fftwf_plan_many_r2r(int rank, const int *n, int howmany, float *in, const int *inembed, int istride, int idist, float *out, const int *onembed, int ostride, int odist, const fftwf_r2r_kind *kind, unsigned flags); extern fftwf_plan fftwf_plan_r2r(int rank, const int *n, float *in, float *out, const fftwf_r2r_kind *kind, unsigned flags); extern fftwf_plan fftwf_plan_r2r_1d(int n, float *in, float *out, fftwf_r2r_kind kind, unsigned flags); extern fftwf_plan fftwf_plan_r2r_2d(int n0, int n1, float *in, float *out, fftwf_r2r_kind kind0, fftwf_r2r_kind kind1, unsigned flags); extern fftwf_plan fftwf_plan_r2r_3d(int n0, int n1, int n2, float *in, float *out, fftwf_r2r_kind kind0, fftwf_r2r_kind kind1, fftwf_r2r_kind kind2, unsigned flags); extern fftwf_plan fftwf_plan_guru_r2r(int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, float *in, float *out, const fftwf_r2r_kind *kind, unsigned flags); extern fftwf_plan fftwf_plan_guru64_r2r(int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, float *in, float *out, const fftwf_r2r_kind *kind, unsigned flags); extern void fftwf_execute_r2r(const fftwf_plan p, float *in, float *out); extern void fftwf_destroy_plan(fftwf_plan p); extern void fftwf_forget_wisdom(void); extern void fftwf_cleanup(void); extern void fftwf_set_timelimit(double t); extern void fftwf_plan_with_nthreads(int nthreads); extern int fftwf_init_threads(void); extern void fftwf_cleanup_threads(void); extern int fftwf_export_wisdom_to_filename(const char *filename); extern void fftwf_export_wisdom_to_file(FILE *output_file); extern char *fftwf_export_wisdom_to_string(void); extern void fftwf_export_wisdom(fftwf_write_char_func write_char, void *data); extern int fftwf_import_system_wisdom(void); extern int fftwf_import_wisdom_from_filename(const char *filename); extern int fftwf_import_wisdom_from_file(FILE *input_file); extern int fftwf_import_wisdom_from_string(const char *input_string); extern int fftwf_import_wisdom(fftwf_read_char_func read_char, void *data); extern void fftwf_fprint_plan(const fftwf_plan p, FILE *output_file); extern void fftwf_print_plan(const fftwf_plan p); extern void *fftwf_malloc(size_t n); extern float *fftwf_alloc_real(size_t n); extern fftwf_complex *fftwf_alloc_complex(size_t n); extern void fftwf_free(void *p); extern void fftwf_flops(const fftwf_plan p, double *add, double *mul, double *fmas); extern double fftwf_estimate_cost(const fftwf_plan p); extern double fftwf_cost(const fftwf_plan p); extern const char fftwf_version[]; extern const char fftwf_cc[]; extern const char fftwf_codelet_optim[];
-typedef long double fftwl_complex[2]; typedef struct fftwl_plan_s *fftwl_plan; typedef struct fftw_iodim_do_not_use_me fftwl_iodim; typedef struct fftw_iodim64_do_not_use_me fftwl_iodim64; typedef enum fftw_r2r_kind_do_not_use_me fftwl_r2r_kind; typedef fftw_write_char_func_do_not_use_me fftwl_write_char_func; typedef fftw_read_char_func_do_not_use_me fftwl_read_char_func; extern void fftwl_execute(const fftwl_plan p); extern fftwl_plan fftwl_plan_dft(int rank, const int *n, fftwl_complex *in, fftwl_complex *out, int sign, unsigned flags); extern fftwl_plan fftwl_plan_dft_1d(int n, fftwl_complex *in, fftwl_complex *out, int sign, unsigned flags); extern fftwl_plan fftwl_plan_dft_2d(int n0, int n1, fftwl_complex *in, fftwl_complex *out, int sign, unsigned flags); extern fftwl_plan fftwl_plan_dft_3d(int n0, int n1, int n2, fftwl_complex *in, fftwl_complex *out, int sign, unsigned flags); extern fftwl_plan fftwl_plan_many_dft(int rank, const int *n, int howmany, fftwl_complex *in, const int *inembed, int istride, int idist, fftwl_complex *out, const int *onembed, int ostride, int odist, int sign, unsigned flags); extern fftwl_plan fftwl_plan_guru_dft(int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, fftwl_complex *in, fftwl_complex *out, int sign, unsigned flags); extern fftwl_plan fftwl_plan_guru_split_dft(int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, long double *ri, long double *ii, long double *ro, long double *io, unsigned flags); extern fftwl_plan fftwl_plan_guru64_dft(int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, fftwl_complex *in, fftwl_complex *out, int sign, unsigned flags); extern fftwl_plan fftwl_plan_guru64_split_dft(int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, long double *ri, long double *ii, long double *ro, long double *io, unsigned flags); extern void fftwl_execute_dft(const fftwl_plan p, fftwl_complex *in, fftwl_complex *out); extern void fftwl_execute_split_dft(const fftwl_plan p, long double *ri, long double *ii, long double *ro, long double *io); extern fftwl_plan fftwl_plan_many_dft_r2c(int rank, const int *n, int howmany, long double *in, const int *inembed, int istride, int idist, fftwl_complex *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftwl_plan fftwl_plan_dft_r2c(int rank, const int *n, long double *in, fftwl_complex *out, unsigned flags); extern fftwl_plan fftwl_plan_dft_r2c_1d(int n,long double *in,fftwl_complex *out,unsigned flags); extern fftwl_plan fftwl_plan_dft_r2c_2d(int n0, int n1, long double *in, fftwl_complex *out, unsigned flags); extern fftwl_plan fftwl_plan_dft_r2c_3d(int n0, int n1, int n2, long double *in, fftwl_complex *out, unsigned flags); extern fftwl_plan fftwl_plan_many_dft_c2r(int rank, const int *n, int howmany, fftwl_complex *in, const int *inembed, int istride, int idist, long double *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftwl_plan fftwl_plan_dft_c2r(int rank, const int *n, fftwl_complex *in, long double *out, unsigned flags); extern fftwl_plan fftwl_plan_dft_c2r_1d(int n,fftwl_complex *in,long double *out,unsigned flags); extern fftwl_plan fftwl_plan_dft_c2r_2d(int n0, int n1, fftwl_complex *in, long double *out, unsigned flags); extern fftwl_plan fftwl_plan_dft_c2r_3d(int n0, int n1, int n2, fftwl_complex *in, long double *out, unsigned flags); extern fftwl_plan fftwl_plan_guru_dft_r2c(int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, long double *in, fftwl_complex *out, unsigned flags); extern fftwl_plan fftwl_plan_guru_dft_c2r(int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, fftwl_complex *in, long double *out, unsigned flags); extern fftwl_plan fftwl_plan_guru_split_dft_r2c( int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, long double *in, long double *ro, long double *io, unsigned flags); extern fftwl_plan fftwl_plan_guru_split_dft_c2r( int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, long double *ri, long double *ii, long double *out, unsigned flags); extern fftwl_plan fftwl_plan_guru64_dft_r2c(int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, long double *in, fftwl_complex *out, unsigned flags); extern fftwl_plan fftwl_plan_guru64_dft_c2r(int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, fftwl_complex *in, long double *out, unsigned flags); extern fftwl_plan fftwl_plan_guru64_split_dft_r2c( int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, long double *in, long double *ro, long double *io, unsigned flags); extern fftwl_plan fftwl_plan_guru64_split_dft_c2r( int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, long double *ri, long double *ii, long double *out, unsigned flags); extern void fftwl_execute_dft_r2c(const fftwl_plan p, long double *in, fftwl_complex *out); extern void fftwl_execute_dft_c2r(const fftwl_plan p, fftwl_complex *in, long double *out); extern void fftwl_execute_split_dft_r2c(const fftwl_plan p, long double *in, long double *ro, long double *io); extern void fftwl_execute_split_dft_c2r(const fftwl_plan p, long double *ri, long double *ii, long double *out); extern fftwl_plan fftwl_plan_many_r2r(int rank, const int *n, int howmany, long double *in, const int *inembed, int istride, int idist, long double *out, const int *onembed, int ostride, int odist, const fftwl_r2r_kind *kind, unsigned flags); extern fftwl_plan fftwl_plan_r2r(int rank, const int *n, long double *in, long double *out, const fftwl_r2r_kind *kind, unsigned flags); extern fftwl_plan fftwl_plan_r2r_1d(int n, long double *in, long double *out, fftwl_r2r_kind kind, unsigned flags); extern fftwl_plan fftwl_plan_r2r_2d(int n0, int n1, long double *in, long double *out, fftwl_r2r_kind kind0, fftwl_r2r_kind kind1, unsigned flags); extern fftwl_plan fftwl_plan_r2r_3d(int n0, int n1, int n2, long double *in, long double *out, fftwl_r2r_kind kind0, fftwl_r2r_kind kind1, fftwl_r2r_kind kind2, unsigned flags); extern fftwl_plan fftwl_plan_guru_r2r(int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, long double *in, long double *out, const fftwl_r2r_kind *kind, unsigned flags); extern fftwl_plan fftwl_plan_guru64_r2r(int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, long double *in, long double *out, const fftwl_r2r_kind *kind, unsigned flags); extern void fftwl_execute_r2r(const fftwl_plan p, long double *in, long double *out); extern void fftwl_destroy_plan(fftwl_plan p); extern void fftwl_forget_wisdom(void); extern void fftwl_cleanup(void); extern void fftwl_set_timelimit(double t); extern void fftwl_plan_with_nthreads(int nthreads); extern int fftwl_init_threads(void); extern void fftwl_cleanup_threads(void); extern int fftwl_export_wisdom_to_filename(const char *filename); extern void fftwl_export_wisdom_to_file(FILE *output_file); extern char *fftwl_export_wisdom_to_string(void); extern void fftwl_export_wisdom(fftwl_write_char_func write_char, void *data); extern int fftwl_import_system_wisdom(void); extern int fftwl_import_wisdom_from_filename(const char *filename); extern int fftwl_import_wisdom_from_file(FILE *input_file); extern int fftwl_import_wisdom_from_string(const char *input_string); extern int fftwl_import_wisdom(fftwl_read_char_func read_char, void *data); extern void fftwl_fprint_plan(const fftwl_plan p, FILE *output_file); extern void fftwl_print_plan(const fftwl_plan p); extern void *fftwl_malloc(size_t n); extern long double *fftwl_alloc_real(size_t n); extern fftwl_complex *fftwl_alloc_complex(size_t n); extern void fftwl_free(void *p); extern void fftwl_flops(const fftwl_plan p, double *add, double *mul, double *fmas); extern double fftwl_estimate_cost(const fftwl_plan p); extern double fftwl_cost(const fftwl_plan p); extern const char fftwl_version[]; extern const char fftwl_cc[]; extern const char fftwl_codelet_optim[];
-# 371 "/home/dvalencia/local/include/fftw3.h"
-typedef __float128 fftwq_complex[2]; typedef struct fftwq_plan_s *fftwq_plan; typedef struct fftw_iodim_do_not_use_me fftwq_iodim; typedef struct fftw_iodim64_do_not_use_me fftwq_iodim64; typedef enum fftw_r2r_kind_do_not_use_me fftwq_r2r_kind; typedef fftw_write_char_func_do_not_use_me fftwq_write_char_func; typedef fftw_read_char_func_do_not_use_me fftwq_read_char_func; extern void fftwq_execute(const fftwq_plan p); extern fftwq_plan fftwq_plan_dft(int rank, const int *n, fftwq_complex *in, fftwq_complex *out, int sign, unsigned flags); extern fftwq_plan fftwq_plan_dft_1d(int n, fftwq_complex *in, fftwq_complex *out, int sign, unsigned flags); extern fftwq_plan fftwq_plan_dft_2d(int n0, int n1, fftwq_complex *in, fftwq_complex *out, int sign, unsigned flags); extern fftwq_plan fftwq_plan_dft_3d(int n0, int n1, int n2, fftwq_complex *in, fftwq_complex *out, int sign, unsigned flags); extern fftwq_plan fftwq_plan_many_dft(int rank, const int *n, int howmany, fftwq_complex *in, const int *inembed, int istride, int idist, fftwq_complex *out, const int *onembed, int ostride, int odist, int sign, unsigned flags); extern fftwq_plan fftwq_plan_guru_dft(int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, fftwq_complex *in, fftwq_complex *out, int sign, unsigned flags); extern fftwq_plan fftwq_plan_guru_split_dft(int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, __float128 *ri, __float128 *ii, __float128 *ro, __float128 *io, unsigned flags); extern fftwq_plan fftwq_plan_guru64_dft(int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, fftwq_complex *in, fftwq_complex *out, int sign, unsigned flags); extern fftwq_plan fftwq_plan_guru64_split_dft(int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, __float128 *ri, __float128 *ii, __float128 *ro, __float128 *io, unsigned flags); extern void fftwq_execute_dft(const fftwq_plan p, fftwq_complex *in, fftwq_complex *out); extern void fftwq_execute_split_dft(const fftwq_plan p, __float128 *ri, __float128 *ii, __float128 *ro, __float128 *io); extern fftwq_plan fftwq_plan_many_dft_r2c(int rank, const int *n, int howmany, __float128 *in, const int *inembed, int istride, int idist, fftwq_complex *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftwq_plan fftwq_plan_dft_r2c(int rank, const int *n, __float128 *in, fftwq_complex *out, unsigned flags); extern fftwq_plan fftwq_plan_dft_r2c_1d(int n,__float128 *in,fftwq_complex *out,unsigned flags); extern fftwq_plan fftwq_plan_dft_r2c_2d(int n0, int n1, __float128 *in, fftwq_complex *out, unsigned flags); extern fftwq_plan fftwq_plan_dft_r2c_3d(int n0, int n1, int n2, __float128 *in, fftwq_complex *out, unsigned flags); extern fftwq_plan fftwq_plan_many_dft_c2r(int rank, const int *n, int howmany, fftwq_complex *in, const int *inembed, int istride, int idist, __float128 *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftwq_plan fftwq_plan_dft_c2r(int rank, const int *n, fftwq_complex *in, __float128 *out, unsigned flags); extern fftwq_plan fftwq_plan_dft_c2r_1d(int n,fftwq_complex *in,__float128 *out,unsigned flags); extern fftwq_plan fftwq_plan_dft_c2r_2d(int n0, int n1, fftwq_complex *in, __float128 *out, unsigned flags); extern fftwq_plan fftwq_plan_dft_c2r_3d(int n0, int n1, int n2, fftwq_complex *in, __float128 *out, unsigned flags); extern fftwq_plan fftwq_plan_guru_dft_r2c(int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, __float128 *in, fftwq_complex *out, unsigned flags); extern fftwq_plan fftwq_plan_guru_dft_c2r(int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, fftwq_complex *in, __float128 *out, unsigned flags); extern fftwq_plan fftwq_plan_guru_split_dft_r2c( int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, __float128 *in, __float128 *ro, __float128 *io, unsigned flags); extern fftwq_plan fftwq_plan_guru_split_dft_c2r( int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, __float128 *ri, __float128 *ii, __float128 *out, unsigned flags); extern fftwq_plan fftwq_plan_guru64_dft_r2c(int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, __float128 *in, fftwq_complex *out, unsigned flags); extern fftwq_plan fftwq_plan_guru64_dft_c2r(int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, fftwq_complex *in, __float128 *out, unsigned flags); extern fftwq_plan fftwq_plan_guru64_split_dft_r2c( int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, __float128 *in, __float128 *ro, __float128 *io, unsigned flags); extern fftwq_plan fftwq_plan_guru64_split_dft_c2r( int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, __float128 *ri, __float128 *ii, __float128 *out, unsigned flags); extern void fftwq_execute_dft_r2c(const fftwq_plan p, __float128 *in, fftwq_complex *out); extern void fftwq_execute_dft_c2r(const fftwq_plan p, fftwq_complex *in, __float128 *out); extern void fftwq_execute_split_dft_r2c(const fftwq_plan p, __float128 *in, __float128 *ro, __float128 *io); extern void fftwq_execute_split_dft_c2r(const fftwq_plan p, __float128 *ri, __float128 *ii, __float128 *out); extern fftwq_plan fftwq_plan_many_r2r(int rank, const int *n, int howmany, __float128 *in, const int *inembed, int istride, int idist, __float128 *out, const int *onembed, int ostride, int odist, const fftwq_r2r_kind *kind, unsigned flags); extern fftwq_plan fftwq_plan_r2r(int rank, const int *n, __float128 *in, __float128 *out, const fftwq_r2r_kind *kind, unsigned flags); extern fftwq_plan fftwq_plan_r2r_1d(int n, __float128 *in, __float128 *out, fftwq_r2r_kind kind, unsigned flags); extern fftwq_plan fftwq_plan_r2r_2d(int n0, int n1, __float128 *in, __float128 *out, fftwq_r2r_kind kind0, fftwq_r2r_kind kind1, unsigned flags); extern fftwq_plan fftwq_plan_r2r_3d(int n0, int n1, int n2, __float128 *in, __float128 *out, fftwq_r2r_kind kind0, fftwq_r2r_kind kind1, fftwq_r2r_kind kind2, unsigned flags); extern fftwq_plan fftwq_plan_guru_r2r(int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, __float128 *in, __float128 *out, const fftwq_r2r_kind *kind, unsigned flags); extern fftwq_plan fftwq_plan_guru64_r2r(int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, __float128 *in, __float128 *out, const fftwq_r2r_kind *kind, unsigned flags); extern void fftwq_execute_r2r(const fftwq_plan p, __float128 *in, __float128 *out); extern void fftwq_destroy_plan(fftwq_plan p); extern void fftwq_forget_wisdom(void); extern void fftwq_cleanup(void); extern void fftwq_set_timelimit(double t); extern void fftwq_plan_with_nthreads(int nthreads); extern int fftwq_init_threads(void); extern void fftwq_cleanup_threads(void); extern int fftwq_export_wisdom_to_filename(const char *filename); extern void fftwq_export_wisdom_to_file(FILE *output_file); extern char *fftwq_export_wisdom_to_string(void); extern void fftwq_export_wisdom(fftwq_write_char_func write_char, void *data); extern int fftwq_import_system_wisdom(void); extern int fftwq_import_wisdom_from_filename(const char *filename); extern int fftwq_import_wisdom_from_file(FILE *input_file); extern int fftwq_import_wisdom_from_string(const char *input_string); extern int fftwq_import_wisdom(fftwq_read_char_func read_char, void *data); extern void fftwq_fprint_plan(const fftwq_plan p, FILE *output_file); extern void fftwq_print_plan(const fftwq_plan p); extern void *fftwq_malloc(size_t n); extern __float128 *fftwq_alloc_real(size_t n); extern fftwq_complex *fftwq_alloc_complex(size_t n); extern void fftwq_free(void *p); extern void fftwq_flops(const fftwq_plan p, double *add, double *mul, double *fmas); extern double fftwq_estimate_cost(const fftwq_plan p); extern double fftwq_cost(const fftwq_plan p); extern const char fftwq_version[]; extern const char fftwq_cc[]; extern const char fftwq_codelet_optim[];
+# 355 "/home/darivadi/local/include/fftw3.h"
+typedef double fftw_complex[2]; typedef struct fftw_plan_s *fftw_plan; typedef struct fftw_iodim_do_not_use_me fftw_iodim; typedef struct fftw_iodim64_do_not_use_me fftw_iodim64; typedef enum fftw_r2r_kind_do_not_use_me fftw_r2r_kind; typedef fftw_write_char_func_do_not_use_me fftw_write_char_func; typedef fftw_read_char_func_do_not_use_me fftw_read_char_func; extern void fftw_execute(const fftw_plan p); extern fftw_plan fftw_plan_dft(int rank, const int *n, fftw_complex *in, fftw_complex *out, int sign, unsigned flags); extern fftw_plan fftw_plan_dft_1d(int n, fftw_complex *in, fftw_complex *out, int sign, unsigned flags); extern fftw_plan fftw_plan_dft_2d(int n0, int n1, fftw_complex *in, fftw_complex *out, int sign, unsigned flags); extern fftw_plan fftw_plan_dft_3d(int n0, int n1, int n2, fftw_complex *in, fftw_complex *out, int sign, unsigned flags); extern fftw_plan fftw_plan_many_dft(int rank, const int *n, int howmany, fftw_complex *in, const int *inembed, int istride, int idist, fftw_complex *out, const int *onembed, int ostride, int odist, int sign, unsigned flags); extern fftw_plan fftw_plan_guru_dft(int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, fftw_complex *in, fftw_complex *out, int sign, unsigned flags); extern fftw_plan fftw_plan_guru_split_dft(int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, double *ri, double *ii, double *ro, double *io, unsigned flags); extern fftw_plan fftw_plan_guru64_dft(int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, fftw_complex *in, fftw_complex *out, int sign, unsigned flags); extern fftw_plan fftw_plan_guru64_split_dft(int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, double *ri, double *ii, double *ro, double *io, unsigned flags); extern void fftw_execute_dft(const fftw_plan p, fftw_complex *in, fftw_complex *out); extern void fftw_execute_split_dft(const fftw_plan p, double *ri, double *ii, double *ro, double *io); extern fftw_plan fftw_plan_many_dft_r2c(int rank, const int *n, int howmany, double *in, const int *inembed, int istride, int idist, fftw_complex *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftw_plan fftw_plan_dft_r2c(int rank, const int *n, double *in, fftw_complex *out, unsigned flags); extern fftw_plan fftw_plan_dft_r2c_1d(int n,double *in,fftw_complex *out,unsigned flags); extern fftw_plan fftw_plan_dft_r2c_2d(int n0, int n1, double *in, fftw_complex *out, unsigned flags); extern fftw_plan fftw_plan_dft_r2c_3d(int n0, int n1, int n2, double *in, fftw_complex *out, unsigned flags); extern fftw_plan fftw_plan_many_dft_c2r(int rank, const int *n, int howmany, fftw_complex *in, const int *inembed, int istride, int idist, double *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftw_plan fftw_plan_dft_c2r(int rank, const int *n, fftw_complex *in, double *out, unsigned flags); extern fftw_plan fftw_plan_dft_c2r_1d(int n,fftw_complex *in,double *out,unsigned flags); extern fftw_plan fftw_plan_dft_c2r_2d(int n0, int n1, fftw_complex *in, double *out, unsigned flags); extern fftw_plan fftw_plan_dft_c2r_3d(int n0, int n1, int n2, fftw_complex *in, double *out, unsigned flags); extern fftw_plan fftw_plan_guru_dft_r2c(int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, double *in, fftw_complex *out, unsigned flags); extern fftw_plan fftw_plan_guru_dft_c2r(int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, fftw_complex *in, double *out, unsigned flags); extern fftw_plan fftw_plan_guru_split_dft_r2c( int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, double *in, double *ro, double *io, unsigned flags); extern fftw_plan fftw_plan_guru_split_dft_c2r( int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, double *ri, double *ii, double *out, unsigned flags); extern fftw_plan fftw_plan_guru64_dft_r2c(int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, double *in, fftw_complex *out, unsigned flags); extern fftw_plan fftw_plan_guru64_dft_c2r(int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, fftw_complex *in, double *out, unsigned flags); extern fftw_plan fftw_plan_guru64_split_dft_r2c( int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, double *in, double *ro, double *io, unsigned flags); extern fftw_plan fftw_plan_guru64_split_dft_c2r( int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, double *ri, double *ii, double *out, unsigned flags); extern void fftw_execute_dft_r2c(const fftw_plan p, double *in, fftw_complex *out); extern void fftw_execute_dft_c2r(const fftw_plan p, fftw_complex *in, double *out); extern void fftw_execute_split_dft_r2c(const fftw_plan p, double *in, double *ro, double *io); extern void fftw_execute_split_dft_c2r(const fftw_plan p, double *ri, double *ii, double *out); extern fftw_plan fftw_plan_many_r2r(int rank, const int *n, int howmany, double *in, const int *inembed, int istride, int idist, double *out, const int *onembed, int ostride, int odist, const fftw_r2r_kind *kind, unsigned flags); extern fftw_plan fftw_plan_r2r(int rank, const int *n, double *in, double *out, const fftw_r2r_kind *kind, unsigned flags); extern fftw_plan fftw_plan_r2r_1d(int n, double *in, double *out, fftw_r2r_kind kind, unsigned flags); extern fftw_plan fftw_plan_r2r_2d(int n0, int n1, double *in, double *out, fftw_r2r_kind kind0, fftw_r2r_kind kind1, unsigned flags); extern fftw_plan fftw_plan_r2r_3d(int n0, int n1, int n2, double *in, double *out, fftw_r2r_kind kind0, fftw_r2r_kind kind1, fftw_r2r_kind kind2, unsigned flags); extern fftw_plan fftw_plan_guru_r2r(int rank, const fftw_iodim *dims, int howmany_rank, const fftw_iodim *howmany_dims, double *in, double *out, const fftw_r2r_kind *kind, unsigned flags); extern fftw_plan fftw_plan_guru64_r2r(int rank, const fftw_iodim64 *dims, int howmany_rank, const fftw_iodim64 *howmany_dims, double *in, double *out, const fftw_r2r_kind *kind, unsigned flags); extern void fftw_execute_r2r(const fftw_plan p, double *in, double *out); extern void fftw_destroy_plan(fftw_plan p); extern void fftw_forget_wisdom(void); extern void fftw_cleanup(void); extern void fftw_set_timelimit(double t); extern void fftw_plan_with_nthreads(int nthreads); extern int fftw_init_threads(void); extern void fftw_cleanup_threads(void); extern int fftw_export_wisdom_to_filename(const char *filename); extern void fftw_export_wisdom_to_file(FILE *output_file); extern char *fftw_export_wisdom_to_string(void); extern void fftw_export_wisdom(fftw_write_char_func write_char, void *data); extern int fftw_import_system_wisdom(void); extern int fftw_import_wisdom_from_filename(const char *filename); extern int fftw_import_wisdom_from_file(FILE *input_file); extern int fftw_import_wisdom_from_string(const char *input_string); extern int fftw_import_wisdom(fftw_read_char_func read_char, void *data); extern void fftw_fprint_plan(const fftw_plan p, FILE *output_file); extern void fftw_print_plan(const fftw_plan p); extern char *fftw_sprint_plan(const fftw_plan p); extern void *fftw_malloc(size_t n); extern double *fftw_alloc_real(size_t n); extern fftw_complex *fftw_alloc_complex(size_t n); extern void fftw_free(void *p); extern void fftw_flops(const fftw_plan p, double *add, double *mul, double *fmas); extern double fftw_estimate_cost(const fftw_plan p); extern double fftw_cost(const fftw_plan p); extern int fftw_alignment_of(double *p); extern const char fftw_version[]; extern const char fftw_cc[]; extern const char fftw_codelet_optim[];
+typedef float fftwf_complex[2]; typedef struct fftwf_plan_s *fftwf_plan; typedef struct fftw_iodim_do_not_use_me fftwf_iodim; typedef struct fftw_iodim64_do_not_use_me fftwf_iodim64; typedef enum fftw_r2r_kind_do_not_use_me fftwf_r2r_kind; typedef fftw_write_char_func_do_not_use_me fftwf_write_char_func; typedef fftw_read_char_func_do_not_use_me fftwf_read_char_func; extern void fftwf_execute(const fftwf_plan p); extern fftwf_plan fftwf_plan_dft(int rank, const int *n, fftwf_complex *in, fftwf_complex *out, int sign, unsigned flags); extern fftwf_plan fftwf_plan_dft_1d(int n, fftwf_complex *in, fftwf_complex *out, int sign, unsigned flags); extern fftwf_plan fftwf_plan_dft_2d(int n0, int n1, fftwf_complex *in, fftwf_complex *out, int sign, unsigned flags); extern fftwf_plan fftwf_plan_dft_3d(int n0, int n1, int n2, fftwf_complex *in, fftwf_complex *out, int sign, unsigned flags); extern fftwf_plan fftwf_plan_many_dft(int rank, const int *n, int howmany, fftwf_complex *in, const int *inembed, int istride, int idist, fftwf_complex *out, const int *onembed, int ostride, int odist, int sign, unsigned flags); extern fftwf_plan fftwf_plan_guru_dft(int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, fftwf_complex *in, fftwf_complex *out, int sign, unsigned flags); extern fftwf_plan fftwf_plan_guru_split_dft(int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, float *ri, float *ii, float *ro, float *io, unsigned flags); extern fftwf_plan fftwf_plan_guru64_dft(int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, fftwf_complex *in, fftwf_complex *out, int sign, unsigned flags); extern fftwf_plan fftwf_plan_guru64_split_dft(int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, float *ri, float *ii, float *ro, float *io, unsigned flags); extern void fftwf_execute_dft(const fftwf_plan p, fftwf_complex *in, fftwf_complex *out); extern void fftwf_execute_split_dft(const fftwf_plan p, float *ri, float *ii, float *ro, float *io); extern fftwf_plan fftwf_plan_many_dft_r2c(int rank, const int *n, int howmany, float *in, const int *inembed, int istride, int idist, fftwf_complex *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftwf_plan fftwf_plan_dft_r2c(int rank, const int *n, float *in, fftwf_complex *out, unsigned flags); extern fftwf_plan fftwf_plan_dft_r2c_1d(int n,float *in,fftwf_complex *out,unsigned flags); extern fftwf_plan fftwf_plan_dft_r2c_2d(int n0, int n1, float *in, fftwf_complex *out, unsigned flags); extern fftwf_plan fftwf_plan_dft_r2c_3d(int n0, int n1, int n2, float *in, fftwf_complex *out, unsigned flags); extern fftwf_plan fftwf_plan_many_dft_c2r(int rank, const int *n, int howmany, fftwf_complex *in, const int *inembed, int istride, int idist, float *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftwf_plan fftwf_plan_dft_c2r(int rank, const int *n, fftwf_complex *in, float *out, unsigned flags); extern fftwf_plan fftwf_plan_dft_c2r_1d(int n,fftwf_complex *in,float *out,unsigned flags); extern fftwf_plan fftwf_plan_dft_c2r_2d(int n0, int n1, fftwf_complex *in, float *out, unsigned flags); extern fftwf_plan fftwf_plan_dft_c2r_3d(int n0, int n1, int n2, fftwf_complex *in, float *out, unsigned flags); extern fftwf_plan fftwf_plan_guru_dft_r2c(int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, float *in, fftwf_complex *out, unsigned flags); extern fftwf_plan fftwf_plan_guru_dft_c2r(int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, fftwf_complex *in, float *out, unsigned flags); extern fftwf_plan fftwf_plan_guru_split_dft_r2c( int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, float *in, float *ro, float *io, unsigned flags); extern fftwf_plan fftwf_plan_guru_split_dft_c2r( int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, float *ri, float *ii, float *out, unsigned flags); extern fftwf_plan fftwf_plan_guru64_dft_r2c(int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, float *in, fftwf_complex *out, unsigned flags); extern fftwf_plan fftwf_plan_guru64_dft_c2r(int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, fftwf_complex *in, float *out, unsigned flags); extern fftwf_plan fftwf_plan_guru64_split_dft_r2c( int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, float *in, float *ro, float *io, unsigned flags); extern fftwf_plan fftwf_plan_guru64_split_dft_c2r( int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, float *ri, float *ii, float *out, unsigned flags); extern void fftwf_execute_dft_r2c(const fftwf_plan p, float *in, fftwf_complex *out); extern void fftwf_execute_dft_c2r(const fftwf_plan p, fftwf_complex *in, float *out); extern void fftwf_execute_split_dft_r2c(const fftwf_plan p, float *in, float *ro, float *io); extern void fftwf_execute_split_dft_c2r(const fftwf_plan p, float *ri, float *ii, float *out); extern fftwf_plan fftwf_plan_many_r2r(int rank, const int *n, int howmany, float *in, const int *inembed, int istride, int idist, float *out, const int *onembed, int ostride, int odist, const fftwf_r2r_kind *kind, unsigned flags); extern fftwf_plan fftwf_plan_r2r(int rank, const int *n, float *in, float *out, const fftwf_r2r_kind *kind, unsigned flags); extern fftwf_plan fftwf_plan_r2r_1d(int n, float *in, float *out, fftwf_r2r_kind kind, unsigned flags); extern fftwf_plan fftwf_plan_r2r_2d(int n0, int n1, float *in, float *out, fftwf_r2r_kind kind0, fftwf_r2r_kind kind1, unsigned flags); extern fftwf_plan fftwf_plan_r2r_3d(int n0, int n1, int n2, float *in, float *out, fftwf_r2r_kind kind0, fftwf_r2r_kind kind1, fftwf_r2r_kind kind2, unsigned flags); extern fftwf_plan fftwf_plan_guru_r2r(int rank, const fftwf_iodim *dims, int howmany_rank, const fftwf_iodim *howmany_dims, float *in, float *out, const fftwf_r2r_kind *kind, unsigned flags); extern fftwf_plan fftwf_plan_guru64_r2r(int rank, const fftwf_iodim64 *dims, int howmany_rank, const fftwf_iodim64 *howmany_dims, float *in, float *out, const fftwf_r2r_kind *kind, unsigned flags); extern void fftwf_execute_r2r(const fftwf_plan p, float *in, float *out); extern void fftwf_destroy_plan(fftwf_plan p); extern void fftwf_forget_wisdom(void); extern void fftwf_cleanup(void); extern void fftwf_set_timelimit(double t); extern void fftwf_plan_with_nthreads(int nthreads); extern int fftwf_init_threads(void); extern void fftwf_cleanup_threads(void); extern int fftwf_export_wisdom_to_filename(const char *filename); extern void fftwf_export_wisdom_to_file(FILE *output_file); extern char *fftwf_export_wisdom_to_string(void); extern void fftwf_export_wisdom(fftwf_write_char_func write_char, void *data); extern int fftwf_import_system_wisdom(void); extern int fftwf_import_wisdom_from_filename(const char *filename); extern int fftwf_import_wisdom_from_file(FILE *input_file); extern int fftwf_import_wisdom_from_string(const char *input_string); extern int fftwf_import_wisdom(fftwf_read_char_func read_char, void *data); extern void fftwf_fprint_plan(const fftwf_plan p, FILE *output_file); extern void fftwf_print_plan(const fftwf_plan p); extern char *fftwf_sprint_plan(const fftwf_plan p); extern void *fftwf_malloc(size_t n); extern float *fftwf_alloc_real(size_t n); extern fftwf_complex *fftwf_alloc_complex(size_t n); extern void fftwf_free(void *p); extern void fftwf_flops(const fftwf_plan p, double *add, double *mul, double *fmas); extern double fftwf_estimate_cost(const fftwf_plan p); extern double fftwf_cost(const fftwf_plan p); extern int fftwf_alignment_of(float *p); extern const char fftwf_version[]; extern const char fftwf_cc[]; extern const char fftwf_codelet_optim[];
+typedef long double fftwl_complex[2]; typedef struct fftwl_plan_s *fftwl_plan; typedef struct fftw_iodim_do_not_use_me fftwl_iodim; typedef struct fftw_iodim64_do_not_use_me fftwl_iodim64; typedef enum fftw_r2r_kind_do_not_use_me fftwl_r2r_kind; typedef fftw_write_char_func_do_not_use_me fftwl_write_char_func; typedef fftw_read_char_func_do_not_use_me fftwl_read_char_func; extern void fftwl_execute(const fftwl_plan p); extern fftwl_plan fftwl_plan_dft(int rank, const int *n, fftwl_complex *in, fftwl_complex *out, int sign, unsigned flags); extern fftwl_plan fftwl_plan_dft_1d(int n, fftwl_complex *in, fftwl_complex *out, int sign, unsigned flags); extern fftwl_plan fftwl_plan_dft_2d(int n0, int n1, fftwl_complex *in, fftwl_complex *out, int sign, unsigned flags); extern fftwl_plan fftwl_plan_dft_3d(int n0, int n1, int n2, fftwl_complex *in, fftwl_complex *out, int sign, unsigned flags); extern fftwl_plan fftwl_plan_many_dft(int rank, const int *n, int howmany, fftwl_complex *in, const int *inembed, int istride, int idist, fftwl_complex *out, const int *onembed, int ostride, int odist, int sign, unsigned flags); extern fftwl_plan fftwl_plan_guru_dft(int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, fftwl_complex *in, fftwl_complex *out, int sign, unsigned flags); extern fftwl_plan fftwl_plan_guru_split_dft(int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, long double *ri, long double *ii, long double *ro, long double *io, unsigned flags); extern fftwl_plan fftwl_plan_guru64_dft(int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, fftwl_complex *in, fftwl_complex *out, int sign, unsigned flags); extern fftwl_plan fftwl_plan_guru64_split_dft(int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, long double *ri, long double *ii, long double *ro, long double *io, unsigned flags); extern void fftwl_execute_dft(const fftwl_plan p, fftwl_complex *in, fftwl_complex *out); extern void fftwl_execute_split_dft(const fftwl_plan p, long double *ri, long double *ii, long double *ro, long double *io); extern fftwl_plan fftwl_plan_many_dft_r2c(int rank, const int *n, int howmany, long double *in, const int *inembed, int istride, int idist, fftwl_complex *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftwl_plan fftwl_plan_dft_r2c(int rank, const int *n, long double *in, fftwl_complex *out, unsigned flags); extern fftwl_plan fftwl_plan_dft_r2c_1d(int n,long double *in,fftwl_complex *out,unsigned flags); extern fftwl_plan fftwl_plan_dft_r2c_2d(int n0, int n1, long double *in, fftwl_complex *out, unsigned flags); extern fftwl_plan fftwl_plan_dft_r2c_3d(int n0, int n1, int n2, long double *in, fftwl_complex *out, unsigned flags); extern fftwl_plan fftwl_plan_many_dft_c2r(int rank, const int *n, int howmany, fftwl_complex *in, const int *inembed, int istride, int idist, long double *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftwl_plan fftwl_plan_dft_c2r(int rank, const int *n, fftwl_complex *in, long double *out, unsigned flags); extern fftwl_plan fftwl_plan_dft_c2r_1d(int n,fftwl_complex *in,long double *out,unsigned flags); extern fftwl_plan fftwl_plan_dft_c2r_2d(int n0, int n1, fftwl_complex *in, long double *out, unsigned flags); extern fftwl_plan fftwl_plan_dft_c2r_3d(int n0, int n1, int n2, fftwl_complex *in, long double *out, unsigned flags); extern fftwl_plan fftwl_plan_guru_dft_r2c(int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, long double *in, fftwl_complex *out, unsigned flags); extern fftwl_plan fftwl_plan_guru_dft_c2r(int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, fftwl_complex *in, long double *out, unsigned flags); extern fftwl_plan fftwl_plan_guru_split_dft_r2c( int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, long double *in, long double *ro, long double *io, unsigned flags); extern fftwl_plan fftwl_plan_guru_split_dft_c2r( int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, long double *ri, long double *ii, long double *out, unsigned flags); extern fftwl_plan fftwl_plan_guru64_dft_r2c(int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, long double *in, fftwl_complex *out, unsigned flags); extern fftwl_plan fftwl_plan_guru64_dft_c2r(int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, fftwl_complex *in, long double *out, unsigned flags); extern fftwl_plan fftwl_plan_guru64_split_dft_r2c( int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, long double *in, long double *ro, long double *io, unsigned flags); extern fftwl_plan fftwl_plan_guru64_split_dft_c2r( int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, long double *ri, long double *ii, long double *out, unsigned flags); extern void fftwl_execute_dft_r2c(const fftwl_plan p, long double *in, fftwl_complex *out); extern void fftwl_execute_dft_c2r(const fftwl_plan p, fftwl_complex *in, long double *out); extern void fftwl_execute_split_dft_r2c(const fftwl_plan p, long double *in, long double *ro, long double *io); extern void fftwl_execute_split_dft_c2r(const fftwl_plan p, long double *ri, long double *ii, long double *out); extern fftwl_plan fftwl_plan_many_r2r(int rank, const int *n, int howmany, long double *in, const int *inembed, int istride, int idist, long double *out, const int *onembed, int ostride, int odist, const fftwl_r2r_kind *kind, unsigned flags); extern fftwl_plan fftwl_plan_r2r(int rank, const int *n, long double *in, long double *out, const fftwl_r2r_kind *kind, unsigned flags); extern fftwl_plan fftwl_plan_r2r_1d(int n, long double *in, long double *out, fftwl_r2r_kind kind, unsigned flags); extern fftwl_plan fftwl_plan_r2r_2d(int n0, int n1, long double *in, long double *out, fftwl_r2r_kind kind0, fftwl_r2r_kind kind1, unsigned flags); extern fftwl_plan fftwl_plan_r2r_3d(int n0, int n1, int n2, long double *in, long double *out, fftwl_r2r_kind kind0, fftwl_r2r_kind kind1, fftwl_r2r_kind kind2, unsigned flags); extern fftwl_plan fftwl_plan_guru_r2r(int rank, const fftwl_iodim *dims, int howmany_rank, const fftwl_iodim *howmany_dims, long double *in, long double *out, const fftwl_r2r_kind *kind, unsigned flags); extern fftwl_plan fftwl_plan_guru64_r2r(int rank, const fftwl_iodim64 *dims, int howmany_rank, const fftwl_iodim64 *howmany_dims, long double *in, long double *out, const fftwl_r2r_kind *kind, unsigned flags); extern void fftwl_execute_r2r(const fftwl_plan p, long double *in, long double *out); extern void fftwl_destroy_plan(fftwl_plan p); extern void fftwl_forget_wisdom(void); extern void fftwl_cleanup(void); extern void fftwl_set_timelimit(double t); extern void fftwl_plan_with_nthreads(int nthreads); extern int fftwl_init_threads(void); extern void fftwl_cleanup_threads(void); extern int fftwl_export_wisdom_to_filename(const char *filename); extern void fftwl_export_wisdom_to_file(FILE *output_file); extern char *fftwl_export_wisdom_to_string(void); extern void fftwl_export_wisdom(fftwl_write_char_func write_char, void *data); extern int fftwl_import_system_wisdom(void); extern int fftwl_import_wisdom_from_filename(const char *filename); extern int fftwl_import_wisdom_from_file(FILE *input_file); extern int fftwl_import_wisdom_from_string(const char *input_string); extern int fftwl_import_wisdom(fftwl_read_char_func read_char, void *data); extern void fftwl_fprint_plan(const fftwl_plan p, FILE *output_file); extern void fftwl_print_plan(const fftwl_plan p); extern char *fftwl_sprint_plan(const fftwl_plan p); extern void *fftwl_malloc(size_t n); extern long double *fftwl_alloc_real(size_t n); extern fftwl_complex *fftwl_alloc_complex(size_t n); extern void fftwl_free(void *p); extern void fftwl_flops(const fftwl_plan p, double *add, double *mul, double *fmas); extern double fftwl_estimate_cost(const fftwl_plan p); extern double fftwl_cost(const fftwl_plan p); extern int fftwl_alignment_of(long double *p); extern const char fftwl_version[]; extern const char fftwl_cc[]; extern const char fftwl_codelet_optim[];
+# 373 "/home/darivadi/local/include/fftw3.h"
+typedef __float128 fftwq_complex[2]; typedef struct fftwq_plan_s *fftwq_plan; typedef struct fftw_iodim_do_not_use_me fftwq_iodim; typedef struct fftw_iodim64_do_not_use_me fftwq_iodim64; typedef enum fftw_r2r_kind_do_not_use_me fftwq_r2r_kind; typedef fftw_write_char_func_do_not_use_me fftwq_write_char_func; typedef fftw_read_char_func_do_not_use_me fftwq_read_char_func; extern void fftwq_execute(const fftwq_plan p); extern fftwq_plan fftwq_plan_dft(int rank, const int *n, fftwq_complex *in, fftwq_complex *out, int sign, unsigned flags); extern fftwq_plan fftwq_plan_dft_1d(int n, fftwq_complex *in, fftwq_complex *out, int sign, unsigned flags); extern fftwq_plan fftwq_plan_dft_2d(int n0, int n1, fftwq_complex *in, fftwq_complex *out, int sign, unsigned flags); extern fftwq_plan fftwq_plan_dft_3d(int n0, int n1, int n2, fftwq_complex *in, fftwq_complex *out, int sign, unsigned flags); extern fftwq_plan fftwq_plan_many_dft(int rank, const int *n, int howmany, fftwq_complex *in, const int *inembed, int istride, int idist, fftwq_complex *out, const int *onembed, int ostride, int odist, int sign, unsigned flags); extern fftwq_plan fftwq_plan_guru_dft(int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, fftwq_complex *in, fftwq_complex *out, int sign, unsigned flags); extern fftwq_plan fftwq_plan_guru_split_dft(int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, __float128 *ri, __float128 *ii, __float128 *ro, __float128 *io, unsigned flags); extern fftwq_plan fftwq_plan_guru64_dft(int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, fftwq_complex *in, fftwq_complex *out, int sign, unsigned flags); extern fftwq_plan fftwq_plan_guru64_split_dft(int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, __float128 *ri, __float128 *ii, __float128 *ro, __float128 *io, unsigned flags); extern void fftwq_execute_dft(const fftwq_plan p, fftwq_complex *in, fftwq_complex *out); extern void fftwq_execute_split_dft(const fftwq_plan p, __float128 *ri, __float128 *ii, __float128 *ro, __float128 *io); extern fftwq_plan fftwq_plan_many_dft_r2c(int rank, const int *n, int howmany, __float128 *in, const int *inembed, int istride, int idist, fftwq_complex *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftwq_plan fftwq_plan_dft_r2c(int rank, const int *n, __float128 *in, fftwq_complex *out, unsigned flags); extern fftwq_plan fftwq_plan_dft_r2c_1d(int n,__float128 *in,fftwq_complex *out,unsigned flags); extern fftwq_plan fftwq_plan_dft_r2c_2d(int n0, int n1, __float128 *in, fftwq_complex *out, unsigned flags); extern fftwq_plan fftwq_plan_dft_r2c_3d(int n0, int n1, int n2, __float128 *in, fftwq_complex *out, unsigned flags); extern fftwq_plan fftwq_plan_many_dft_c2r(int rank, const int *n, int howmany, fftwq_complex *in, const int *inembed, int istride, int idist, __float128 *out, const int *onembed, int ostride, int odist, unsigned flags); extern fftwq_plan fftwq_plan_dft_c2r(int rank, const int *n, fftwq_complex *in, __float128 *out, unsigned flags); extern fftwq_plan fftwq_plan_dft_c2r_1d(int n,fftwq_complex *in,__float128 *out,unsigned flags); extern fftwq_plan fftwq_plan_dft_c2r_2d(int n0, int n1, fftwq_complex *in, __float128 *out, unsigned flags); extern fftwq_plan fftwq_plan_dft_c2r_3d(int n0, int n1, int n2, fftwq_complex *in, __float128 *out, unsigned flags); extern fftwq_plan fftwq_plan_guru_dft_r2c(int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, __float128 *in, fftwq_complex *out, unsigned flags); extern fftwq_plan fftwq_plan_guru_dft_c2r(int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, fftwq_complex *in, __float128 *out, unsigned flags); extern fftwq_plan fftwq_plan_guru_split_dft_r2c( int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, __float128 *in, __float128 *ro, __float128 *io, unsigned flags); extern fftwq_plan fftwq_plan_guru_split_dft_c2r( int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, __float128 *ri, __float128 *ii, __float128 *out, unsigned flags); extern fftwq_plan fftwq_plan_guru64_dft_r2c(int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, __float128 *in, fftwq_complex *out, unsigned flags); extern fftwq_plan fftwq_plan_guru64_dft_c2r(int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, fftwq_complex *in, __float128 *out, unsigned flags); extern fftwq_plan fftwq_plan_guru64_split_dft_r2c( int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, __float128 *in, __float128 *ro, __float128 *io, unsigned flags); extern fftwq_plan fftwq_plan_guru64_split_dft_c2r( int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, __float128 *ri, __float128 *ii, __float128 *out, unsigned flags); extern void fftwq_execute_dft_r2c(const fftwq_plan p, __float128 *in, fftwq_complex *out); extern void fftwq_execute_dft_c2r(const fftwq_plan p, fftwq_complex *in, __float128 *out); extern void fftwq_execute_split_dft_r2c(const fftwq_plan p, __float128 *in, __float128 *ro, __float128 *io); extern void fftwq_execute_split_dft_c2r(const fftwq_plan p, __float128 *ri, __float128 *ii, __float128 *out); extern fftwq_plan fftwq_plan_many_r2r(int rank, const int *n, int howmany, __float128 *in, const int *inembed, int istride, int idist, __float128 *out, const int *onembed, int ostride, int odist, const fftwq_r2r_kind *kind, unsigned flags); extern fftwq_plan fftwq_plan_r2r(int rank, const int *n, __float128 *in, __float128 *out, const fftwq_r2r_kind *kind, unsigned flags); extern fftwq_plan fftwq_plan_r2r_1d(int n, __float128 *in, __float128 *out, fftwq_r2r_kind kind, unsigned flags); extern fftwq_plan fftwq_plan_r2r_2d(int n0, int n1, __float128 *in, __float128 *out, fftwq_r2r_kind kind0, fftwq_r2r_kind kind1, unsigned flags); extern fftwq_plan fftwq_plan_r2r_3d(int n0, int n1, int n2, __float128 *in, __float128 *out, fftwq_r2r_kind kind0, fftwq_r2r_kind kind1, fftwq_r2r_kind kind2, unsigned flags); extern fftwq_plan fftwq_plan_guru_r2r(int rank, const fftwq_iodim *dims, int howmany_rank, const fftwq_iodim *howmany_dims, __float128 *in, __float128 *out, const fftwq_r2r_kind *kind, unsigned flags); extern fftwq_plan fftwq_plan_guru64_r2r(int rank, const fftwq_iodim64 *dims, int howmany_rank, const fftwq_iodim64 *howmany_dims, __float128 *in, __float128 *out, const fftwq_r2r_kind *kind, unsigned flags); extern void fftwq_execute_r2r(const fftwq_plan p, __float128 *in, __float128 *out); extern void fftwq_destroy_plan(fftwq_plan p); extern void fftwq_forget_wisdom(void); extern void fftwq_cleanup(void); extern void fftwq_set_timelimit(double t); extern void fftwq_plan_with_nthreads(int nthreads); extern int fftwq_init_threads(void); extern void fftwq_cleanup_threads(void); extern int fftwq_export_wisdom_to_filename(const char *filename); extern void fftwq_export_wisdom_to_file(FILE *output_file); extern char *fftwq_export_wisdom_to_string(void); extern void fftwq_export_wisdom(fftwq_write_char_func write_char, void *data); extern int fftwq_import_system_wisdom(void); extern int fftwq_import_wisdom_from_filename(const char *filename); extern int fftwq_import_wisdom_from_file(FILE *input_file); extern int fftwq_import_wisdom_from_string(const char *input_string); extern int fftwq_import_wisdom(fftwq_read_char_func read_char, void *data); extern void fftwq_fprint_plan(const fftwq_plan p, FILE *output_file); extern void fftwq_print_plan(const fftwq_plan p); extern char *fftwq_sprint_plan(const fftwq_plan p); extern void *fftwq_malloc(size_t n); extern __float128 *fftwq_alloc_real(size_t n); extern fftwq_complex *fftwq_alloc_complex(size_t n); extern void fftwq_free(void *p); extern void fftwq_flops(const fftwq_plan p, double *add, double *mul, double *fmas); extern double fftwq_estimate_cost(const fftwq_plan p); extern double fftwq_cost(const fftwq_plan p); extern int fftwq_alignment_of(__float128 *p); extern const char fftwq_version[]; extern const char fftwq_cc[]; extern const char fftwq_codelet_optim[];
 # 8 "FFT_of_densities.c" 2
+# 1 "/home/darivadi/local/include/gsl/gsl_sort.h" 1
 
+
+
+# 1 "/home/darivadi/local/include/gsl/gsl_sort_long_double.h" 1
+# 24 "/home/darivadi/local/include/gsl/gsl_sort_long_double.h"
+# 1 "/home/darivadi/local/include/gsl/gsl_errno.h" 1
+# 24 "/home/darivadi/local/include/gsl/gsl_errno.h"
+# 1 "/usr/include/errno.h" 1 3 4
+# 31 "/usr/include/errno.h" 3 4
+
+
+
+
+# 1 "/usr/include/x86_64-linux-gnu/bits/errno.h" 1 3 4
+# 24 "/usr/include/x86_64-linux-gnu/bits/errno.h" 3 4
+# 1 "/usr/include/linux/errno.h" 1 3 4
+# 1 "/usr/include/x86_64-linux-gnu/asm/errno.h" 1 3 4
+# 1 "/usr/include/asm-generic/errno.h" 1 3 4
+
+
+
+# 1 "/usr/include/asm-generic/errno-base.h" 1 3 4
+# 5 "/usr/include/asm-generic/errno.h" 2 3 4
+# 1 "/usr/include/x86_64-linux-gnu/asm/errno.h" 2 3 4
+# 1 "/usr/include/linux/errno.h" 2 3 4
+# 25 "/usr/include/x86_64-linux-gnu/bits/errno.h" 2 3 4
+# 50 "/usr/include/x86_64-linux-gnu/bits/errno.h" 3 4
+extern int *__errno_location (void) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
+# 36 "/usr/include/errno.h" 2 3 4
+# 58 "/usr/include/errno.h" 3 4
+
+# 25 "/home/darivadi/local/include/gsl/gsl_errno.h" 2
+# 1 "/home/darivadi/local/include/gsl/gsl_types.h" 1
+# 26 "/home/darivadi/local/include/gsl/gsl_errno.h" 2
+# 37 "/home/darivadi/local/include/gsl/gsl_errno.h"
+
+
+enum {
+  GSL_SUCCESS = 0,
+  GSL_FAILURE = -1,
+  GSL_CONTINUE = -2,
+  GSL_EDOM = 1,
+  GSL_ERANGE = 2,
+  GSL_EFAULT = 3,
+  GSL_EINVAL = 4,
+  GSL_EFAILED = 5,
+  GSL_EFACTOR = 6,
+  GSL_ESANITY = 7,
+  GSL_ENOMEM = 8,
+  GSL_EBADFUNC = 9,
+  GSL_ERUNAWAY = 10,
+  GSL_EMAXITER = 11,
+  GSL_EZERODIV = 12,
+  GSL_EBADTOL = 13,
+  GSL_ETOL = 14,
+  GSL_EUNDRFLW = 15,
+  GSL_EOVRFLW = 16,
+  GSL_ELOSS = 17,
+  GSL_EROUND = 18,
+  GSL_EBADLEN = 19,
+  GSL_ENOTSQR = 20,
+  GSL_ESING = 21,
+  GSL_EDIVERGE = 22,
+  GSL_EUNSUP = 23,
+  GSL_EUNIMPL = 24,
+  GSL_ECACHE = 25,
+  GSL_ETABLE = 26,
+  GSL_ENOPROG = 27,
+  GSL_ENOPROGJ = 28,
+  GSL_ETOLF = 29,
+  GSL_ETOLX = 30,
+  GSL_ETOLG = 31,
+  GSL_EOF = 32
+} ;
+
+void gsl_error (const char * reason, const char * file, int line,
+                int gsl_errno);
+
+void gsl_stream_printf (const char *label, const char *file,
+                        int line, const char *reason);
+
+const char * gsl_strerror (const int gsl_errno);
+
+typedef void gsl_error_handler_t (const char * reason, const char * file,
+                                  int line, int gsl_errno);
+
+typedef void gsl_stream_handler_t (const char * label, const char * file,
+                                   int line, const char * reason);
+
+gsl_error_handler_t *
+gsl_set_error_handler (gsl_error_handler_t * new_handler);
+
+gsl_error_handler_t *
+gsl_set_error_handler_off (void);
+
+gsl_stream_handler_t *
+gsl_set_stream_handler (gsl_stream_handler_t * new_handler);
+
+FILE * gsl_set_stream (FILE * new_stream);
+# 152 "/home/darivadi/local/include/gsl/gsl_errno.h"
+
+# 25 "/home/darivadi/local/include/gsl/gsl_sort_long_double.h" 2
+# 1 "/home/darivadi/local/include/gsl/gsl_permutation.h" 1
+# 26 "/home/darivadi/local/include/gsl/gsl_permutation.h"
+# 1 "/home/darivadi/local/include/gsl/gsl_inline.h" 1
+# 27 "/home/darivadi/local/include/gsl/gsl_permutation.h" 2
+# 1 "/home/darivadi/local/include/gsl/gsl_check_range.h" 1
+# 36 "/home/darivadi/local/include/gsl/gsl_check_range.h"
+
+
+extern int gsl_check_range;
+# 55 "/home/darivadi/local/include/gsl/gsl_check_range.h"
+
+# 28 "/home/darivadi/local/include/gsl/gsl_permutation.h" 2
+# 39 "/home/darivadi/local/include/gsl/gsl_permutation.h"
+
+
+struct gsl_permutation_struct
+{
+  size_t size;
+  size_t *data;
+};
+
+typedef struct gsl_permutation_struct gsl_permutation;
+
+gsl_permutation *gsl_permutation_alloc (const size_t n);
+gsl_permutation *gsl_permutation_calloc (const size_t n);
+void gsl_permutation_init (gsl_permutation * p);
+void gsl_permutation_free (gsl_permutation * p);
+int gsl_permutation_memcpy (gsl_permutation * dest, const gsl_permutation * src);
+
+int gsl_permutation_fread (FILE * stream, gsl_permutation * p);
+int gsl_permutation_fwrite (FILE * stream, const gsl_permutation * p);
+int gsl_permutation_fscanf (FILE * stream, gsl_permutation * p);
+int gsl_permutation_fprintf (FILE * stream, const gsl_permutation * p, const char *format);
+
+size_t gsl_permutation_size (const gsl_permutation * p);
+size_t * gsl_permutation_data (const gsl_permutation * p);
+
+int gsl_permutation_swap (gsl_permutation * p, const size_t i, const size_t j);
+
+int gsl_permutation_valid (const gsl_permutation * p);
+void gsl_permutation_reverse (gsl_permutation * p);
+int gsl_permutation_inverse (gsl_permutation * inv, const gsl_permutation * p);
+int gsl_permutation_next (gsl_permutation * p);
+int gsl_permutation_prev (gsl_permutation * p);
+int gsl_permutation_mul (gsl_permutation * p, const gsl_permutation * pa, const gsl_permutation * pb);
+
+int gsl_permutation_linear_to_canonical (gsl_permutation * q, const gsl_permutation * p);
+int gsl_permutation_canonical_to_linear (gsl_permutation * p, const gsl_permutation * q);
+
+size_t gsl_permutation_inversions (const gsl_permutation * p);
+size_t gsl_permutation_linear_cycles (const gsl_permutation * p);
+size_t gsl_permutation_canonical_cycles (const gsl_permutation * q);
+
+ size_t gsl_permutation_get (const gsl_permutation * p, const size_t i);
+# 98 "/home/darivadi/local/include/gsl/gsl_permutation.h"
+
+# 26 "/home/darivadi/local/include/gsl/gsl_sort_long_double.h" 2
+# 37 "/home/darivadi/local/include/gsl/gsl_sort_long_double.h"
+
+
+void gsl_sort_long_double (long double * data, const size_t stride, const size_t n);
+void gsl_sort2_long_double (long double * data1, const size_t stride1, long double * data2, const size_t stride2, const size_t n);
+void gsl_sort_long_double_index (size_t * p, const long double * data, const size_t stride, const size_t n);
+
+int gsl_sort_long_double_smallest (long double * dest, const size_t k, const long double * src, const size_t stride, const size_t n);
+int gsl_sort_long_double_smallest_index (size_t * p, const size_t k, const long double * src, const size_t stride, const size_t n);
+
+int gsl_sort_long_double_largest (long double * dest, const size_t k, const long double * src, const size_t stride, const size_t n);
+int gsl_sort_long_double_largest_index (size_t * p, const size_t k, const long double * src, const size_t stride, const size_t n);
+
+
+# 5 "/home/darivadi/local/include/gsl/gsl_sort.h" 2
+# 1 "/home/darivadi/local/include/gsl/gsl_sort_double.h" 1
+# 37 "/home/darivadi/local/include/gsl/gsl_sort_double.h"
+
+
+void gsl_sort (double * data, const size_t stride, const size_t n);
+void gsl_sort2 (double * data1, const size_t stride1, double * data2, const size_t stride2, const size_t n);
+void gsl_sort_index (size_t * p, const double * data, const size_t stride, const size_t n);
+
+int gsl_sort_smallest (double * dest, const size_t k, const double * src, const size_t stride, const size_t n);
+int gsl_sort_smallest_index (size_t * p, const size_t k, const double * src, const size_t stride, const size_t n);
+
+int gsl_sort_largest (double * dest, const size_t k, const double * src, const size_t stride, const size_t n);
+int gsl_sort_largest_index (size_t * p, const size_t k, const double * src, const size_t stride, const size_t n);
+
+
+# 6 "/home/darivadi/local/include/gsl/gsl_sort.h" 2
+# 1 "/home/darivadi/local/include/gsl/gsl_sort_float.h" 1
+# 37 "/home/darivadi/local/include/gsl/gsl_sort_float.h"
+
+
+void gsl_sort_float (float * data, const size_t stride, const size_t n);
+void gsl_sort2_float (float * data1, const size_t stride1, float * data2, const size_t stride2, const size_t n);
+void gsl_sort_float_index (size_t * p, const float * data, const size_t stride, const size_t n);
+
+int gsl_sort_float_smallest (float * dest, const size_t k, const float * src, const size_t stride, const size_t n);
+int gsl_sort_float_smallest_index (size_t * p, const size_t k, const float * src, const size_t stride, const size_t n);
+
+int gsl_sort_float_largest (float * dest, const size_t k, const float * src, const size_t stride, const size_t n);
+int gsl_sort_float_largest_index (size_t * p, const size_t k, const float * src, const size_t stride, const size_t n);
+
+
+# 7 "/home/darivadi/local/include/gsl/gsl_sort.h" 2
+
+# 1 "/home/darivadi/local/include/gsl/gsl_sort_ulong.h" 1
+# 37 "/home/darivadi/local/include/gsl/gsl_sort_ulong.h"
+
+
+void gsl_sort_ulong (unsigned long * data, const size_t stride, const size_t n);
+void gsl_sort2_ulong (unsigned long * data1, const size_t stride1, unsigned long * data2, const size_t stride2, const size_t n);
+void gsl_sort_ulong_index (size_t * p, const unsigned long * data, const size_t stride, const size_t n);
+
+int gsl_sort_ulong_smallest (unsigned long * dest, const size_t k, const unsigned long * src, const size_t stride, const size_t n);
+int gsl_sort_ulong_smallest_index (size_t * p, const size_t k, const unsigned long * src, const size_t stride, const size_t n);
+
+int gsl_sort_ulong_largest (unsigned long * dest, const size_t k, const unsigned long * src, const size_t stride, const size_t n);
+int gsl_sort_ulong_largest_index (size_t * p, const size_t k, const unsigned long * src, const size_t stride, const size_t n);
+
+
+# 9 "/home/darivadi/local/include/gsl/gsl_sort.h" 2
+# 1 "/home/darivadi/local/include/gsl/gsl_sort_long.h" 1
+# 37 "/home/darivadi/local/include/gsl/gsl_sort_long.h"
+
+
+void gsl_sort_long (long * data, const size_t stride, const size_t n);
+void gsl_sort2_long (long * data1, const size_t stride1, long * data2, const size_t stride2, const size_t n);
+void gsl_sort_long_index (size_t * p, const long * data, const size_t stride, const size_t n);
+
+int gsl_sort_long_smallest (long * dest, const size_t k, const long * src, const size_t stride, const size_t n);
+int gsl_sort_long_smallest_index (size_t * p, const size_t k, const long * src, const size_t stride, const size_t n);
+
+int gsl_sort_long_largest (long * dest, const size_t k, const long * src, const size_t stride, const size_t n);
+int gsl_sort_long_largest_index (size_t * p, const size_t k, const long * src, const size_t stride, const size_t n);
+
+
+# 10 "/home/darivadi/local/include/gsl/gsl_sort.h" 2
+
+# 1 "/home/darivadi/local/include/gsl/gsl_sort_uint.h" 1
+# 37 "/home/darivadi/local/include/gsl/gsl_sort_uint.h"
+
+
+void gsl_sort_uint (unsigned int * data, const size_t stride, const size_t n);
+void gsl_sort2_uint (unsigned int * data1, const size_t stride1, unsigned int * data2, const size_t stride2, const size_t n);
+void gsl_sort_uint_index (size_t * p, const unsigned int * data, const size_t stride, const size_t n);
+
+int gsl_sort_uint_smallest (unsigned int * dest, const size_t k, const unsigned int * src, const size_t stride, const size_t n);
+int gsl_sort_uint_smallest_index (size_t * p, const size_t k, const unsigned int * src, const size_t stride, const size_t n);
+
+int gsl_sort_uint_largest (unsigned int * dest, const size_t k, const unsigned int * src, const size_t stride, const size_t n);
+int gsl_sort_uint_largest_index (size_t * p, const size_t k, const unsigned int * src, const size_t stride, const size_t n);
+
+
+# 12 "/home/darivadi/local/include/gsl/gsl_sort.h" 2
+# 1 "/home/darivadi/local/include/gsl/gsl_sort_int.h" 1
+# 37 "/home/darivadi/local/include/gsl/gsl_sort_int.h"
+
+
+void gsl_sort_int (int * data, const size_t stride, const size_t n);
+void gsl_sort2_int (int * data1, const size_t stride1, int * data2, const size_t stride2, const size_t n);
+void gsl_sort_int_index (size_t * p, const int * data, const size_t stride, const size_t n);
+
+int gsl_sort_int_smallest (int * dest, const size_t k, const int * src, const size_t stride, const size_t n);
+int gsl_sort_int_smallest_index (size_t * p, const size_t k, const int * src, const size_t stride, const size_t n);
+
+int gsl_sort_int_largest (int * dest, const size_t k, const int * src, const size_t stride, const size_t n);
+int gsl_sort_int_largest_index (size_t * p, const size_t k, const int * src, const size_t stride, const size_t n);
+
+
+# 13 "/home/darivadi/local/include/gsl/gsl_sort.h" 2
+
+# 1 "/home/darivadi/local/include/gsl/gsl_sort_ushort.h" 1
+# 37 "/home/darivadi/local/include/gsl/gsl_sort_ushort.h"
+
+
+void gsl_sort_ushort (unsigned short * data, const size_t stride, const size_t n);
+void gsl_sort2_ushort (unsigned short * data1, const size_t stride1, unsigned short * data2, const size_t stride2, const size_t n);
+void gsl_sort_ushort_index (size_t * p, const unsigned short * data, const size_t stride, const size_t n);
+
+int gsl_sort_ushort_smallest (unsigned short * dest, const size_t k, const unsigned short * src, const size_t stride, const size_t n);
+int gsl_sort_ushort_smallest_index (size_t * p, const size_t k, const unsigned short * src, const size_t stride, const size_t n);
+
+int gsl_sort_ushort_largest (unsigned short * dest, const size_t k, const unsigned short * src, const size_t stride, const size_t n);
+int gsl_sort_ushort_largest_index (size_t * p, const size_t k, const unsigned short * src, const size_t stride, const size_t n);
+
+
+# 15 "/home/darivadi/local/include/gsl/gsl_sort.h" 2
+# 1 "/home/darivadi/local/include/gsl/gsl_sort_short.h" 1
+# 37 "/home/darivadi/local/include/gsl/gsl_sort_short.h"
+
+
+void gsl_sort_short (short * data, const size_t stride, const size_t n);
+void gsl_sort2_short (short * data1, const size_t stride1, short * data2, const size_t stride2, const size_t n);
+void gsl_sort_short_index (size_t * p, const short * data, const size_t stride, const size_t n);
+
+int gsl_sort_short_smallest (short * dest, const size_t k, const short * src, const size_t stride, const size_t n);
+int gsl_sort_short_smallest_index (size_t * p, const size_t k, const short * src, const size_t stride, const size_t n);
+
+int gsl_sort_short_largest (short * dest, const size_t k, const short * src, const size_t stride, const size_t n);
+int gsl_sort_short_largest_index (size_t * p, const size_t k, const short * src, const size_t stride, const size_t n);
+
+
+# 16 "/home/darivadi/local/include/gsl/gsl_sort.h" 2
+
+# 1 "/home/darivadi/local/include/gsl/gsl_sort_uchar.h" 1
+# 37 "/home/darivadi/local/include/gsl/gsl_sort_uchar.h"
+
+
+void gsl_sort_uchar (unsigned char * data, const size_t stride, const size_t n);
+void gsl_sort2_uchar (unsigned char * data1, const size_t stride1, unsigned char * data2, const size_t stride2, const size_t n);
+void gsl_sort_uchar_index (size_t * p, const unsigned char * data, const size_t stride, const size_t n);
+
+int gsl_sort_uchar_smallest (unsigned char * dest, const size_t k, const unsigned char * src, const size_t stride, const size_t n);
+int gsl_sort_uchar_smallest_index (size_t * p, const size_t k, const unsigned char * src, const size_t stride, const size_t n);
+
+int gsl_sort_uchar_largest (unsigned char * dest, const size_t k, const unsigned char * src, const size_t stride, const size_t n);
+int gsl_sort_uchar_largest_index (size_t * p, const size_t k, const unsigned char * src, const size_t stride, const size_t n);
+
+
+# 18 "/home/darivadi/local/include/gsl/gsl_sort.h" 2
+# 1 "/home/darivadi/local/include/gsl/gsl_sort_char.h" 1
+# 37 "/home/darivadi/local/include/gsl/gsl_sort_char.h"
+
+
+void gsl_sort_char (char * data, const size_t stride, const size_t n);
+void gsl_sort2_char (char * data1, const size_t stride1, char * data2, const size_t stride2, const size_t n);
+void gsl_sort_char_index (size_t * p, const char * data, const size_t stride, const size_t n);
+
+int gsl_sort_char_smallest (char * dest, const size_t k, const char * src, const size_t stride, const size_t n);
+int gsl_sort_char_smallest_index (size_t * p, const size_t k, const char * src, const size_t stride, const size_t n);
+
+int gsl_sort_char_largest (char * dest, const size_t k, const char * src, const size_t stride, const size_t n);
+int gsl_sort_char_largest_index (size_t * p, const size_t k, const char * src, const size_t stride, const size_t n);
+
+
+# 19 "/home/darivadi/local/include/gsl/gsl_sort.h" 2
+# 9 "FFT_of_densities.c" 2
 
 
 
@@ -3541,6 +3880,8 @@ struct grid
   double DenCon_FFTout[2];
 
   double DenCon_K[2];
+
+  double DenCon_K_2;
 
   double k_vector[3];
   double k_module;
@@ -3614,6 +3955,17 @@ struct GlobalVariables
   double Omega_M0;
   double Omega_L0;
   double MeanDen;
+
+
+  size_t *SortedID;
+  double DeltaK;
+  double *BinsPS;
+  double *BinsK;
+  int *BinsCount;
+  double kF;
+  double kN;
+  double shotNoise;
+
 
 }GV;
 # 14 "FFT_of_densities.c" 2
@@ -3985,6 +4337,8 @@ int transform()
    gp[m].DenCon_K[0] = 0.0;
    gp[m].DenCon_K[1] = 0.0;
       }
+
+      gp[m].DenCon_K_2 = gp[m].DenCon_K[0]*gp[m].DenCon_K[0] + gp[m].DenCon_K[1]*gp[m].DenCon_K[1];
     }
 
   printf("Density contrast in k-space with CIC weight fn ready!!\n");
@@ -3998,132 +4352,135 @@ int transform()
   return 0;
 }
 # 16 "FFT_of_densities.c" 2
-# 1 "FFT_potential.c" 1
+# 1 "Sorting_N.c" 1
+int Sorting_k (void){
+  int i;
+  double *k_aux=((void *)0);
+
+  k_aux = (double *)calloc(GV.NTOTALCELLS, sizeof(double));
+  GV.SortedID = malloc(GV.NTOTALCELLS * sizeof(size_t));
 
 
-
-
-
-
-int potential()
-{
-  int m, i, j, k;
-  double factor;
-  FILE *pf=((void *)0);
-
-
-  printf("Computing potential in k-space\n");
-  printf("-----------------------------------------\n");
-
-
-  factor = (-3.0/2.0) * (GV.H0*GV.H0) * GV.Omega_M0 / GV.a_SF;
-
-  for(m=0; m<GV.NTOTK; m++)
+  for(i = 0; i < GV.NTOTALCELLS; i++ )
     {
-      if( gp[m].k_module > GV.ZERO )
- {
-   gp[m].poten_k[0] = factor * gp[m].DenCon_K[0]/(gp[m].k_module * gp[m].k_module);
-   gp[m].poten_k[1] = factor * gp[m].DenCon_K[1]/(gp[m].k_module * gp[m].k_module);
- }
-      else
- {
-   gp[m].poten_k[0] = 0.0;
-   gp[m].poten_k[1] = 0.0;
- }
-    }
-
-  printf("Potential in k-space saved!\n");
-  printf("-----------------------------------------\n");
-
-
-
-
-
-  fftw_complex *in=((void *)0);
-  double *out=((void *)0);
-  fftw_complex *in2=((void *)0);
-  fftw_plan plan_k2r;
-  fftw_plan plan_r2k;
-
-
-
-  in = (fftw_complex *) fftw_malloc( sizeof( fftw_complex ) * GV.NTOTK );
-  out = (double *) fftw_malloc( sizeof( double ) * GV.NTOTALCELLS );
-
-
-  for(m=0; m<GV.NTOTK; m++)
-    {
-      in[m][0] = gp[m].poten_k[0];
-      in[m][1] = gp[m].poten_k[1];
+      k_aux[i] = gp[i].k_module;
     }
 
 
 
 
-  plan_k2r = fftw_plan_dft_c2r_3d( GV.NCELLS, GV.NCELLS, GV.NCELLS, in, out, (0U) );
-  fftw_execute( plan_k2r );
-
-  printf("FFT potential k2r finished!\n");
-  printf("---------------------------------------\n");
 
 
-  pf = fopen("./../Potential_r_out.dat", "w");
-  fprintf(pf, "%s%14s %15s\n", "#", "ID", "Poten(r)");
-  for( m=0; m<GV.NTOTALCELLS; m++ )
-    {
-      gp[m].poten_r = out[m]/GV.NORM;
-      fprintf(pf,
-       "%10d %16.8lf\n",
-       m, gp[m].poten_r );
-    }
-  fclose(pf);
-
-  printf("---------------------------------------\n");
-  printf("Potential in r space from an out-of-place transform saved!\n");
-  printf("---------------------------------------\n");
-
-
-
-  in2 = (fftw_complex *) fftw_malloc( sizeof( fftw_complex ) * GV.NTOTK );
-  plan_r2k = fftw_plan_dft_r2c_3d( GV.NCELLS, GV.NCELLS, GV.NCELLS, out, in2, (1U << 6) );
-  fftw_execute( plan_r2k );
-
-  printf("Recreated input of potential in k-space from out-of-place transform performed\n");
-  printf("---------------------------------------\n");
-
-
-
-  pf = fopen("./../Testing_potential_k_space.dat", "w");
-  fprintf(pf, "%s%14s %15s %15s %15s\n", "#", "Re_Pot(k)", "Im_Pot(k)", "Reconst_Re", "Reconst_Im");
-
-  for(m=0; m<GV.NTOTK; m++)
-    {
-      fprintf(pf,
-       "%10d %20.8lf %20.8lf %20.8lf %20.8lf\n",
-       m,
-       gp[m].poten_k[0], gp[m].poten_k[1],
-       in2[m][0]/(GV.NORM*GV.NORM), in2[m][1]/(GV.NORM*GV.NORM));
-    }
-  fclose(pf),
-
-  printf("Recreated input of potential in k-space from out-of-place transform saved\n");
-  printf("---------------------------------------\n");
-
-
-  fftw_destroy_plan( plan_k2r );
-  fftw_destroy_plan( plan_r2k );
-
-  fftw_free( in );
-  fftw_free( in2 );
-  fftw_free( out );
-# 197 "FFT_potential.c"
-  printf("FFT_potential code finished!\n");
-  printf("----------------------------\n");
+  gsl_sort_index(GV.SortedID, k_aux, 1, GV.NTOTALCELLS);
 
   return 0;
 }
 # 17 "FFT_of_densities.c" 2
-# 28 "FFT_of_densities.c"
+# 1 "Power_spectrum.c" 1
+# 10 "Power_spectrum.c"
+void power_spectrum()
+{
+  int m, i, j, k;
+  int iCenter, jCenter, kCenter, mCenter;
+  int suma = 0;
+  double norm, K_radius1 = 0.0, K_radius2 = 0.0, K_center = 0.0;
+  double logBins, lmin, lmax;
+  int NBins;
+  FILE *outfile;
+
+
+
+  GV.DeltaK = 0.02;
+  NBins = 200;
+
+  printf("Creating bins: %d\n", NBins);
+
+  GV.BinsPS = (double *)calloc(NBins, sizeof(double));
+  GV.BinsK = (double *)calloc(NBins, sizeof(double));
+  GV.BinsCount = (int *)calloc(NBins, sizeof(int));
+
+  GV.kF = (2.0*3.14159265358979323846)/GV.BoxSize;
+  GV.kN = 3.14159265358979323846/GV.CellSize;
+  GV.shotNoise = pow(GV.CellSize,3);
+
+
+
+  for(j=0; j<NBins; j++)
+    {
+      GV.BinsPS[j] = 0.0;
+      GV.BinsK[j] = 0.0;
+      GV.BinsCount[j] = 0;
+    }
+
+  printf("Vectors initialized\n");
+
+
+  printf("Computing power spectrum\n");
+  j = 0;
+
+  for (i=0; i<NBins; i++)
+    {
+      K_radius1 = (double) i * GV.DeltaK;
+      K_radius2 = ((double) (i+1)) * GV.DeltaK;
+      for(m=0; m<GV.NTOTALCELLS; m++)
+ {
+   if( gp[GV.SortedID[m]].k_module >= K_radius1 && gp[GV.SortedID[m]].k_module < K_radius2 )
+     {
+       GV.BinsPS[i] += gp[GV.SortedID[m]].DenCon_K_2;
+       GV.BinsK[i] = K_radius2;
+       GV.BinsCount[i]++;
+     }
+   else
+     {
+       continue;
+     }
+ }
+    }
+
+
+
+  for(j=0; j<=NBins; j++)
+    {
+      if( GV.BinsCount[j] == 0 )
+ {
+   GV.BinsPS[j] = 0.0;
+   printf("bin j=%d is null\n", j);
+ }
+      else
+ {
+   GV.BinsPS[j] /= (1.0*GV.BinsCount[j]);
+ }
+    }
+  printf("Divided by the number of counts\n");
+
+
+  printf("Printing outfile\n");
+  outfile = fopen("Power_Spectrum_lineal.dat", "w");
+  fprintf(outfile,"%s\t %9s\t %10s %10s\n", "#", "Delta_k", "PS(Delta_k)", "CountsInBin");
+
+  for(j=0; j<=NBins; j++)
+    {
+      if(GV.DeltaK*(j+0.5)>GV.kN)
+ {
+   continue;
+ }
+
+      GV.BinsPS[j] *= (GV.CellSize * GV.CellSize * GV.CellSize)/(1.0*GV.NTOTALCELLS);
+      GV.BinsPS[j] -= GV.shotNoise;
+      GV.BinsPS[j] /= 1.0 - 0.666666666667*sin(GV.DeltaK*(j+0.5)*GV.CellSize*0.5)*sin(GV.DeltaK*(j+0.5)*GV.CellSize*0.5);
+
+      fprintf(outfile, "%16.8lf %20.10lf %12.6d\n", GV.BinsK[j], GV.BinsPS[j], GV.BinsCount[j]);
+      suma += GV.BinsCount[j];
+    }
+
+  fclose(outfile);
+
+  printf("Total counts = %d\n", suma);
+
+
+}
+# 18 "FFT_of_densities.c" 2
+# 30 "FFT_of_densities.c"
 int main( int argc, char *argv[] )
 {
   int m, i, j, k;
@@ -4155,7 +4512,7 @@ int main( int argc, char *argv[] )
 
 
   gp = (struct grid *) malloc((size_t) GV.NTOTALCELLS*sizeof(struct grid));
-# 69 "FFT_of_densities.c"
+# 71 "FFT_of_densities.c"
   read_data( GV.FILENAME );
   printf("Ascii data file has been read succesfully!\n");
   printf("-----------------------------------------------------------------\n");
@@ -4192,12 +4549,27 @@ int main( int argc, char *argv[] )
   printf("-----------------------------------------------------------------\n");
 
 
-  potential();
-  printf("FFT of gravitational potential finished!\n");
+  Sorting_k();
+  printf("ID's according to k sorted!\n");
   printf("-----------------------------------------------------------------\n");
+
+  printf("Computing Power spectrum\n");
+  printf("-----------------------------------------------------------------\n");
+  power_spectrum();
+  printf("Power spectrum computed\n");
+  printf("-----------------------------------------------------------------\n");
+
+
 
   free(gp);
   exit(0);
+
+
+
+
+  printf("FFT of gravitational potential finished!\n");
+  printf("-----------------------------------------------------------------\n");
+
 
 
 
@@ -4255,7 +4627,7 @@ int main( int argc, char *argv[] )
        gp[m].potDot_r_l_app2);
     }
   fclose(pf);
-# 179 "FFT_of_densities.c"
+# 196 "FFT_of_densities.c"
   printf("Freeing-up memory\n");
   printf("--------------------------------------------------\n");
   free(gp);

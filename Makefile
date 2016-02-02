@@ -1,6 +1,6 @@
 CC = gcc
 
-CFLAGS = -O3 -I/home/$(USER)/local/include -I/usr/include/ -DCIC -DASCIIDATA -DOUTOFPLACE -DPOTDOTEXACT -DPOTDOTLINEAR
+CFLAGS = -O3 -I/home/$(USER)/local/include -I/usr/include/ -DCIC -DASCIIDATA -DOUTOFPLACE -DPOTDOTEXACT -DPOTDOTLINEAR -DPSLINEAL
 #CFLAGS = -O3 -I/home/$(USER)/local/include -I/usr/include/ -DCIC -DASCIIDATA -DOUTOFPLACE
 CFLAGSINPLACE = -O3 -I/home/$(USER)/local/include -I/usr/include/ -DCIC -DASCIIDATA -DINPLACE -DPOTDOTEXACT -DPOTDOTLINEAR
 CFLAGSDEBUG = -g -Wall -c -I/home/$(USER)/local/include/ -I/usr/include/ -DCIC -DASCIIDATA -DOUTOFPLACE -DPOTDOTEXACT -DPOTDOTLINEAR
@@ -12,25 +12,25 @@ PROGRAM = FFT_of_densities
 
 $(PROGRAM):	
 	$(CC) -c -save-temps $@.c $(CFLAGS)
-	$(CC) $@.o -lm -lfftw3 $(LFLAGS) -o $@.x
+	$(CC) $@.o -lgsl -lgslcblas -lm -lfftw3 $(LFLAGS) -o $@.x
 
 
 debug:
 	echo Compiling for debug $(PROGRAM).c
 	$(CC) $(CFLAGSDEBUG) $(PROGRAM).c -o $(PROGRAM).o
-	$(CC) $(PROGRAM).o $(LFLAGS) -lfftw3 -lm -o $(PROGRAM)_debug.x
+	$(CC) $(PROGRAM).o $(LFLAGS) -lgsl -lgslcblas -lfftw3 -lm -o $(PROGRAM)_debug.x
 
 
 asciidata:
 	echo Compiling for ascii format $(PROGRAM).c
 	$(CC) $(CFLAGSASCII) $(PROGRAM).c -o $(PROGRAM).o
-	$(CC) $(PROGRAM).o $(LFLAGS) -lfftw3 -lm -o $(PROGRAM)_ascii.x
+	$(CC) $(PROGRAM).o $(LFLAGS) -lgsl -lgslcblas -lfftw3 -lm -o $(PROGRAM)_ascii.x
 
 
 inplace:
 	echo Compiling for in-place transforms $(PROGRAM).c
 	$(CC) -c -save-temps $(PROGRAM).c $(CFLAGSINPLACE)
-	$(CC) $(PROGRAM).o $(LFLAGS) -lm -lfftw3 -o $(PROGRAM)_inplace.x
+	$(CC) $(PROGRAM).o $(LFLAGS) -lgsl -lgslcblas -lm -lfftw3 -o $(PROGRAM)_inplace.x
 
 
 clean:

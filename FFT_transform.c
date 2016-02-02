@@ -338,13 +338,14 @@ int transform()
 	{
 	  gp[m].DenCon_K[0] = gp[m].DenCon_FFTout[0] / gp[m].weight_CIC;
 	  gp[m].DenCon_K[1] = gp[m].DenCon_FFTout[1] / gp[m].weight_CIC;
-	  gp[m].DenCon_K_2 = ;
 	}//if
       else
 	{
 	  gp[m].DenCon_K[0] = 0.0;
-	  gp[m].DenCon_K[1] = 0.0;	  
+	  gp[m].DenCon_K[1] = 0.0;
       }//else
+
+      gp[m].DenCon_K_2 = gp[m].DenCon_K[0]*gp[m].DenCon_K[0] + gp[m].DenCon_K[1]*gp[m].DenCon_K[1];
     }//for m
   
   printf("Density contrast in k-space with CIC weight fn ready!!\n");

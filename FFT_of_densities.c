@@ -108,17 +108,23 @@ int main( int argc, char *argv[] )
   printf("ID's according to k sorted!\n");
   printf("-----------------------------------------------------------------\n");
 
-
+  printf("Computing Power spectrum\n");
+  printf("-----------------------------------------------------------------\n");
+  power_spectrum();
+  printf("Power spectrum computed\n");
+  printf("-----------------------------------------------------------------\n");
 
 #endif
+
+  free(gp);
+  exit(0);
+
 
   /*--- FFT OF GRAVITATIONAL POTENTIAL ---*/
   //potential(); //In C-order
   printf("FFT of gravitational potential finished!\n");
   printf("-----------------------------------------------------------------\n");
   
-  free(gp);
-  exit(0);
 
   /*+++++ FFT OF THE MOMENTUM OF THE CENTER OF MASS IN EACH AXIS +++++*/
 #ifdef POTDOTEXACT

@@ -1,10 +1,9 @@
 int Sorting_k (void){
-  FILE *fin;
-  int i, j, k, m;
+  int i;
   double *k_aux=NULL;
 
-  k_aux = (double *)calloc(n, sizeof(double));
-  GV.SortedID = malloc(n * sizeof(size_t));
+  k_aux = (double *)calloc(GV.NTOTALCELLS, sizeof(double));
+  GV.SortedID = malloc(GV.NTOTALCELLS * sizeof(size_t));
 
   //Assigning each value of the k-vector of the cell to the auxiliar vector
   for(i = 0; i < GV.NTOTALCELLS; i++ )
@@ -17,7 +16,7 @@ int Sorting_k (void){
     particulas y devulve, organizadas en orden creciente,                                      
     las distancias y los respectivos indices de las particulas
   */
-  gsl_sort_index(GV.SortedID, k_aux, 1, n);
+  gsl_sort_index(GV.SortedID, k_aux, 1, GV.NTOTALCELLS);
 
   return 0;  
 }
