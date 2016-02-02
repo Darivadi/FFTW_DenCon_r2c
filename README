@@ -1,0 +1,45 @@
+The code FFT_of_densities works as follows:
+
+It takes the inputs via the command line, as follows: 
+./FFT_of_densities.x Data_file Number_of_cells_per_axis Reshift Omega_m0 Omega_lambda0
+
+The data file Data_file is an ASCII data with the following information: index of each cell,
+number of particles in each cell, positions (x,y,z), velocities (vx,vy,vz), density and 
+density contrast. This data must be in C-order.
+
+After reading this data file, it performs Fourier transforms in this order:
+First, a Fourier transform of the density contrast field is performed. Then, the computation 
+of the wavevector numbers k is performed for each cell. With the wavevectors, the Fourier 
+transform of the window function is calculated depending if the mass assignment scheme is 
+a NGP or CIC. Then, the deconvolution of the transform of the density contrast field and 
+the window function is performend.
+
+Second, the Fourier transform of the momentum field is computed. Here, as the input file 
+comes from the CIC code, the reading of the velocities is actually the reading of the 
+momentum of each cell, then the velocity values read in this code is passed directly 
+to the momentum variable. The momentum field is transformed to Fourier space and then, 
+deconvolved with the window function.
+
+Third, the gravitational potential is computed in the Fourier space through the 
+Poisson equation in the Fourier space. An inverse Fourier transform is performed in order 
+to obtain the gravitational potential in the position' space.
+
+Fourth, the time derivative of the gravitational potential (PotDot) is performed. 
+For this step, it is necessary to compute the factor k.p in the Fourier space. Then, 
+an inverse Fourier transform is computed in order to obtain PotDot in the position' 
+space.
+
+Fifth, two linear approximations are computed. The first one is proportional to 
+1/Omega_Lambda0, while the second approximation is proportional to Omega_M(a).
+Both are computed in the Fourier space and two inverse Fourier transforms are computed to find 
+their values in the position' space.
+
+Finally, a data file is saved in the HDD with the following information:
+index, positions, momentum, density contrast, potential, PotDot, PotDot_linear_approx1, PotDot_linear_approx2
+
+The two last values are optional. 
+
+NOTE: This version doesn't save the values of the linear approximation, then, the next 
+code about interpolation and integration will not read them, but could be modified in order 
+to do it.
+

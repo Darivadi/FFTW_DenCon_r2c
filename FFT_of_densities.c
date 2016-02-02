@@ -1,0 +1,200 @@
+/*******************************************************************
+                       HEADERS
+*******************************************************************/
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <fftw3.h>
+#include <gsl/gsl_sort.h>
+
+/*******************************************************************
+                    SUPPORT FILES
+*******************************************************************/
+#include "FFT_variables.c"
+#include "FFT_routines.c"
+#include "FFT_transform.c"
+#include "Sorting_N.c"
+#include "Power_spectrum.c"
+//#include "FFT_potential.c"
+//#include "FFT_momentum_den_cm.c"
+//#include "FFT_pot_dot.c"
+//#include "FFT_potDot_linear.c"
+
+
+/*************************************************************************************
+NAME: main
+FUNCTION: executes the read_data() and transform() functions
+INPUT: data file
+RETURN: none
+*************************************************************************************/
+int main( int argc, char *argv[] )
+{
+  int m, i, j, k;
+  char *infile=NULL;
+  FILE *pf=NULL;
+  
+  if(argc < 2)
+    {
+      printf("Error: Incomplete number of parameters. Execute as follows:\n");
+      printf("%s Parameters_file\n", argv[0]);
+      exit(0);
+    }//if   
+
+  infile     = argv[1];             // Parameters file
+
+  /*+++++ Reading parameters file +++++*/  
+  read_parameters( infile );
+
+
+  /*+++++ Some variables +++++*/
+  GV.ZERO = 1e-30;
+  GV.CNMESH = floor(GV.NCELLS/2); //Rounded down
+  GV.NTOTK = GV.NCELLS*GV.NCELLS*(GV.CNMESH+1);
+  GV.NTOTALCELLS  = GV.NCELLS*GV.NCELLS*GV.NCELLS;
+  GV.NORM = sqrt(GV.NTOTALCELLS);
+  GV.PADDING = GV.NTOTALCELLS + 2*GV.NCELLS*GV.NCELLS; //NCELLS*NCELLS*2(NCELLS/2+1)
+  printf("Variables are ready to use!\n");
+  printf("-----------------------------------------------------------------\n");
+
+  /*--- MEMORY ALLOCATION ---*/
+  gp = (struct grid *) malloc((size_t) GV.NTOTALCELLS*sizeof(struct grid));
+
+  /*+++++ Reading binary file +++++*/
+#ifdef BINARYDATA
+  read_binary();
+  printf("Binary data file has been read succesfully!\n");
+  printf("-----------------------------------------------------------------\n");
+#endif
+
+#ifdef ASCIIDATA  
+  /*--- READING ASCII DATAFILE ---*/
+  read_data( GV.FILENAME );
+  printf("Ascii data file has been read succesfully!\n");
+  printf("-----------------------------------------------------------------\n");
+#endif
+
+  
+  /*+++++ Hubble's constant in terms of redshift +++++*/
+  GV.Hz      = GV.H0 * sqrt(GV.Omega_L0 + GV.Omega_M0 * pow( (1+GV.z_RS), 3 ) ); 
+  GV.CellSize     = GV.BoxSize/(1.0*GV.NCELLS);
+  
+  printf("Simulation parameters\n");
+  printf("GV.NCELLS:%12d GV.NTOTALCELLS:%12d\n" 
+	 "GV.BoxSize:%16.8lf GV.CellSize:%16.8lf\n"
+	 "GV.NTOTK:%12d GV.PADDING:%12d\n"
+	 "GV.CNMESH:%12d GV.NORM:%16.8lf\n", 
+	 GV.NCELLS, GV.NTOTALCELLS,
+	 GV.BoxSize, GV.CellSize,
+	 GV.NTOTK, GV.PADDING,
+	 GV.CNMESH, GV.NORM);
+
+  printf("----------------------------------------------------------------\n");
+  printf("Cosmological parameters\n");
+  printf("GV.z_RS=%lf GV.H0=%lf \nGV.Hz=%lf GV.a_SF=%lf\n", 
+	 GV.z_RS,
+	 GV.H0, 
+	 GV.Hz, 
+	 GV.a_SF);
+  printf("-----------------------------------------------------------------\n");
+  
+
+  /*--- FFT OF THE DENSITY CONTRAST ---*/
+  transform(); //In C-order
+  printf("FFT of density contrast finished!\n");
+  printf("-----------------------------------------------------------------\n");
+
+#ifdef PSLINEAL
+  Sorting_k();
+  printf("ID's according to k sorted!\n");
+  printf("-----------------------------------------------------------------\n");
+
+
+
+#endif
+
+  /*--- FFT OF GRAVITATIONAL POTENTIAL ---*/
+  //potential(); //In C-order
+  printf("FFT of gravitational potential finished!\n");
+  printf("-----------------------------------------------------------------\n");
+  
+  free(gp);
+  exit(0);
+
+  /*+++++ FFT OF THE MOMENTUM OF THE CENTER OF MASS IN EACH AXIS +++++*/
+#ifdef POTDOTEXACT
+  /*----- As for PotDot exact we need the momentum, but not for the linear 
+    approximations, I put the momentum transforms inside this pre-processor 
+    directive -----*/
+  momentum_den_cm(); //In C-order
+  printf("FFT of momentum finished!\n");
+  printf("-----------------------------------------------------------------\n");
+  
+  /*--- FFT OF THE TIME DERIVATIVE OF THE POTENTIAL ---*/
+  potential_dot(); //In C-order
+  printf("FFT of time derivative of gravitational potential finished!\n");
+  printf("-----------------------------------------------------------------\n");
+#endif
+
+  free(gp);
+  exit(0);
+
+  /*--- FFT OF THE LINEAR APPROXIMATIONS TO THE ---
+    --- TIME DERIVATIVE OF THE POTENTIAL        ---*/
+#ifdef POTDOTLINEAR
+  potential_dot_linear(); //In C-order
+  printf("FFT of time derivative of gravitational potential in linear approximation finished!\n");
+  printf("-----------------------------------------------------------------\n");
+#endif
+
+  /*--- FINISHING THE FFTs ---*/
+  printf("All FFT transforms have finished succesfully!\n");
+  printf("-----------------------------------------------------------------\n");
+  
+  
+  /*--- SAVING OUTPUT DATA FILE WITH REAL PARTS ---*/
+#ifdef ASCIIDATA
+  pf = fopen("./../DenCon_Potential_PotDot_fields_r2c.dat" ,"w");
+
+  fprintf(pf, "%s%10s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s %12s\n",
+          "#", "Index", 
+	  "xc", "yc", "zc",
+	  "px", "py", "pz",
+	  "DenCon(r)", "Pot(r)", "PotDot(r)",
+	  "PotDot_l_app1(r)", "PotDot_l_app2(r)");
+
+  
+  for(m=0; m<GV.NTOTALCELLS; m++)
+    {           
+      fprintf(pf, "%12d %16.8lf %16.8lf %16.8lf %16.8lf %16.8lf %16.8lf %16.8lf %16.8lf %16.8lf %16.8lf %16.8lf\n", 
+	      m, 
+	      gp[m].pos[X], gp[m].pos[Y], gp[m].pos[Z],
+	      gp[m].p_r[X], gp[m].p_r[Y], gp[m].p_r[Z],
+	      gp[m].DenConCell,
+	      gp[m].poten_r,
+	      gp[m].potDot_r,
+	      gp[m].potDot_r_l_app1,
+	      gp[m].potDot_r_l_app2);
+    }//for m
+  fclose(pf);
+#endif  
+
+  
+#ifdef BINARYDATA
+  write_binary();
+  printf("Binary file saved!\n");
+  printf("--------------------------------------------------\n");
+#endif
+  
+
+  /*--- FREEING UP MEMORY---*/
+  printf("Freeing-up memory\n");
+  printf("--------------------------------------------------\n");
+  free(gp);
+
+  printf("-----------------------------------------------------------------\n");
+  printf("All codes have run succesfully!\n");
+  printf("FFT code finished!\n");
+  printf("-----------------------------------------------------------------\n");
+  
+  return 0;
+}//main
